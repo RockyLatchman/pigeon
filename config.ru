@@ -1,0 +1,8 @@
+require 'sinatra/base'
+require 'dotenv'
+Dotenv.load
+ENV['RACK_ENV'] ||= 'development'
+Dir.glob('./{helpers,controllers}/*.rb').each { |file| require file}
+
+
+map('/') { run ApplicationController}
