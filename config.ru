@@ -6,4 +6,4 @@ Dir.glob('./{helpers,controllers}/*.rb').each { |file| require file}
 
 
 map('/') { run ApplicationController }
-map('/inbox') { run InboxController }
+map('/inbox') { run MessageController }

@@ -1,1 +1,4 @@
 <h1>Inbox</h1>
+<% @messages.each do |message| %>
+  <%= message['subject'] %>
+<% end %>
