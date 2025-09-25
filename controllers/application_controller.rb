@@ -12,8 +12,5 @@ class ApplicationController < Sinatra::Base
     erb :not_found
   end
 
-  get '/' do
-    'hello'
-  end
 
 end
