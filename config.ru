@@ -11,3 +11,4 @@ map('/account') { run AccountController }
 map('/contacts') { run ContactController }
 map('/settings') { run SettingsController }
 map('/storage') { run StorageController }
+map('/calendar') { run CalendarController }
