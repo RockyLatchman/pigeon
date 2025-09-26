@@ -1,0 +1,66 @@
+
+/* Global */
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  background: #fff;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  height: 100vh;
+  background: #fff;
+
+}
+
+:root {
+  --border-color: #D8D8D8FF;
+  --headingColor: #535353FF;
+  --buttonColor: #DE067AFF;
+  --iconColor: #AFAFAFFF;
+  --bodyTextColor: #5D5D5DFF;
+}
+
+
+/* Sidebar menu */
+
+.sidebar {
+  width: 15%;
+  height: auto;
+  padding: 50px;
+  background: #FAFAFAFF;
+}
+
+.sidebar h3 {
+  font: 800 1.4em "Montserrat", sans-serif;
+  color: var(--headingColor);
+  margin-bottom: 25px;
+}
+
+nav menu li {
+  list-style-type: none;
+  padding: 10px 0;
+}
+
+nav menu li i {
+  color: var(--iconColor);
+  font-size: 1.4em;
+  padding-right: 15px;
+}
+
+nav menu li a{
+  font: 600 0.9em "Montserrat", sans-serif;
+  color: var(--bodyTextColor);
+  text-decoration: none;
+}
