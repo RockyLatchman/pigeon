@@ -21,7 +21,6 @@ body {
   width: 100%;
   height: 100vh;
   background: #fff;
-
 }
 
 :root {
@@ -31,7 +30,6 @@ body {
   --iconColor: #AFAFAFFF;
   --bodyTextColor: #5D5D5DFF;
 }
-
 
 /* Sidebar menu */
 
@@ -48,19 +46,167 @@ body {
   margin-bottom: 25px;
 }
 
-nav menu li {
+.sidebar nav menu li {
   list-style-type: none;
   padding: 10px 0;
 }
 
-nav menu li i {
+.sidebar nav menu li i {
   color: var(--iconColor);
   font-size: 1.4em;
   padding-right: 15px;
 }
 
-nav menu li a{
+.sidebar nav menu li a {
   font: 600 0.9em "Montserrat", sans-serif;
   color: var(--bodyTextColor);
   text-decoration: none;
+}
+
+
+/* Inbox */
+
+.message-container {
+   border: 1px solid var(--border-color);
+   width: 100%;
+   height: 100vh;
+   overflow-y: hidden;
+}
+
+.message-body {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+/* Inbox - Messages */
+
+.inbox {
+  background: #F0F0F0FF;
+  width: 25%;
+  height: 100vh;
+}
+
+.inbox .messages {
+  padding: 25px 0;
+}
+
+.inbox #no-mail {
+  padding: 75px 0;
+}
+
+.inbox .messages h4  {
+  font: 600 1em "Montserrat", sans-serif;
+  color: var(--bodyTextColor);
+  text-align: center;
+}
+
+/* Inbox - header */
+
+.message-container header {
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 15px 0;
+}
+
+.message-container header .search-container {
+  width: 25%;
+  margin-left: 35px;
+}
+
+.message-container header .search-container i {
+  color: var(--iconColor);
+}
+
+.message-container header .search-container input {
+  width: 85%;
+  height: 35px;
+  outline: transparent;
+  border: none;
+  font: 600 0.9em "Montserrat", sans-serif;
+  color: var(--bodyTextColor);
+}
+
+.message-container header nav {
+  width: 75%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.message-container header nav menu {
+  border: 1px solid var(--border-color);
+  border-radius: 15px;
+  width: 35%;
+  height: 35px;
+  margin-left: 12.5%;
+}
+
+.message-container header nav menu li {
+   display: inline-block;
+   list-style-type: none;
+   font: 600 0.7em "Montserrat", sans-serif;
+   color: var(--bodyTextColor);
+   border-right: 1px solid var(--border-color);
+   padding: 0 15px;
+   line-height: 3em;
+   cursor: pointer;
+}
+
+.message-container header nav menu li:last-of-type {
+  border-right: none;
+}
+
+.message-container header nav menu li i {
+  color: var(--iconColor);
+  padding-right: 2px;
+}
+
+.profile {
+  width: 42px;
+  height: 42px;
+  margin: 0 25px 0 auto;
+}
+
+.profile img {
+  border-radius: 20px;
+  margin-left: auto;
+}
+
+/* Inbox - Main area */
+
+.blank-message {
+  width: 100%;
+}
+
+.message-content {
+  width: 100%;
+  margin-left: 10%;
+}
+
+.message-content img {
+  display: block;
+  width: 512px;
+  height: 420px;
+  margin: 0 auto;
+}
+
+.message-details {
+  width: 75%;
+  margin: -50px auto 0 auto;
+}
+
+.message-content h4 {
+  font: 800 1.2em "Montserrat", sans-serif;
+  color: var(--headingColor);
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.message-content p {
+  font: 500 0.8em "Montserrat", sans-serif;
+  color: var(--bodyTextColor);
+  text-align: center;
 }
