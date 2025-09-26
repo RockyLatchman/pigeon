@@ -2,6 +2,7 @@
 
 class ContactController < ApplicationController
   get '/' do
+    erb :contacts
   end
 
   put '/edit/:contact' do

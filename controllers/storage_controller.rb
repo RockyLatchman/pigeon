@@ -2,6 +2,7 @@
 
 class StorageController < ApplicationController
    get '/' do
+     erb :storage
    end
 
    post '/add-item' do

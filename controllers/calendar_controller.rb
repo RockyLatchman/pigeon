@@ -1,6 +1,7 @@
 
 class CalendarController < ApplicationController
    get '/' do
+     erb :calendar
    end
 
    post '/add-event/:event' do
