@@ -30,7 +30,7 @@ def inbox():
 
 @app.route('/contacts')
 def contacts():
-    pass
+    return render_template('contacts.html')
 
 @app.route('/calendar')
 def calendar():
