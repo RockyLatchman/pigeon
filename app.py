@@ -2,6 +2,7 @@ from flask import Flask, render_template, session
 from dotenv import load_dotenv
 from flask_wtf import CSRFProtect
 from sqlmodel import Session, create_engine
+import os
 
 load_dotenv('.env')
 
@@ -9,10 +10,11 @@ app = Flask(__name__)
 app.config['DATABASE_URL'] = os.environ.get('DATABASE_URL')
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 db_engine = create_engine(app.config['DATABASE_URL'], echo=True)
+csrf_token = CSRFProtect(app)
 
 @app.route('/')
 def index():
-    pass
+    return render_template('index.html')
 
 @app.route('/register')
 def register():
