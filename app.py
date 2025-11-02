@@ -2,6 +2,7 @@ from flask import Flask, render_template, session, request
 from dotenv import load_dotenv
 from flask_wtf import CSRFProtect
 from sqlmodel import Session, create_engine
+from models import Account, Contact, Event, Message, Storage
 import os
 import datetime
 import calendar
@@ -30,6 +31,10 @@ def signout():
 @app.route('/inbox')
 def inbox():
     return render_template('inbox.html')
+
+@app.route('/inbox/send')
+def send_message():
+    pass
 
 @app.route('/contacts')
 def contacts():
