@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <div class="row-container">
+     {% include 'partials/menu.html' %}
+      <div class="message-container">
+         {% include 'partials/filter.html' %}
+         <main>
+             <div class="main-sidebar">
+                <header>
+                   <h3>Storage</h3>
+                   <span><img src="{{ url_for('static', filename='images/hard-drive-solid.svg') }}" alt=""> USED 1GB</span>\
+                   <div class="disk-usage-bar"></div>
+                   <ul>
+                     <li>85% photos</li>
+                     <li>1,234 photos</li>
+                     <li>15% music</li>
+                     <li>1,234 songs</li>
+                   </ul>
+                </header>
+             </div>
+             <div class="main-content">
+                <div class="documents">
+                    <header>
+                        <h3>All documents</h3>
+                        <select name="document-filter">
+                            <option value="documents">Documents</option>
+                            <option value="audio">Audio</option>
+                            <option value="image">Image</option>
+                        </select>
+                    </header>
+                    <div class="content-card">
+                        <header>
+                            <ul>
+                              <li>FILENAME</li>
+                              <li>TYPE</li>
+                              <li>DATE ADDED</li>
+                            </ul>
+                        </header>
+                        <div class="content">
+                           <ul>
+                             <li>Phoenix-1901.mp3</li>
+                             <li>Audio</li>
+                             <li>An hour ago</li>
+                             <li class="kebab-menu">&vellip;</li>
+                           </ul>
+                           <ul>
+                             <li>Coldplay-Violet_Hill.mp3</li>
+                             <li>Audio</li>
+                             <li>2 days ago</li>
+                             <li class="kebab-menu">&vellip;</li>
+                           </ul>
+                           <ul>
+                             <li>img001.png</li>
+                             <li>Image</li>
+                             <li>6 hours ago</li>
+                             <li class="kebab-menu">&vellip;</li>
+                           </ul>
+                           <ul>
+                             <li>img002.jpg</li>
+                             <li>Image</li>
+                             <li>12 hours ago</li>
+                             <li class="kebab-menu">&vellip;</li>
+                           </ul>
+                           <ul>
+                             <li>resume.doc</li>
+                             <li>Document</li>
+                             <li>2 weeks ago</li>
+                             <li class="kebab-menu">&vellip;</li>
+                           </ul>
+                        </div>
+                    </div>
+                </div>
+             </div>
+         </main>
+      </div>
+  </div>
+</div>
+{% endblock %}
