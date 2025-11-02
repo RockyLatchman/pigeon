@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session
+from flask import Flask, render_template, session, request
 from dotenv import load_dotenv
 from flask_wtf import CSRFProtect
 from sqlmodel import Session, create_engine
@@ -26,7 +26,7 @@ def signout():
 
 @app.route('/inbox')
 def inbox():
-    pass
+    return render_template('inbox.html')
 
 @app.route('/contacts')
 def contacts():
@@ -42,6 +42,10 @@ def storage():
 
 @app.route('/settings')
 def settings():
+    pass
+
+@app.route('/tags/<color>')
+def tag(color):
     pass
 
 if __name__ == '__main__':

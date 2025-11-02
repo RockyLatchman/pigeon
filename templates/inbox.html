@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <div class="row-container">
+      <div class="menu-sidebar">
+          <header>
+              <h2>Pigeon</h2>
+          </header>
+          <menu>
+              <li><a href="{{ url_for('inbox') }}"><img src="{{ url_for('static', filename='images/inbox-solid.svg')}}" alt="">Inbox</a></li>
+              <li><a href="{{ url_for('contacts') }}"><img src="{{ url_for('static', filename='images/rectangle-list-solid.svg')}}" alt="">Contacts</a></li>
+              <li><a href="{{ url_for('calendar') }}"><img src="{{ url_for('static', filename='images/calendar-days-solid.svg')}}" alt="">Calendar</a></li>
+              <li><a href="{{ url_for('storage') }}"><img src="{{ url_for('static', filename='images/hard-drive-solid.svg')}}" alt="">Storage</a></li>
+              <li><a href="{{ url_for('settings') }}"><img src="{{ url_for('static', filename='images/gear-solid.svg')}}" alt="">Settings</a></li>
+          </menu>
+          <menu>
+              <h4>Tags</h4>
+              <li><a href="{{ url_for('tag', color='')}}">Family</a></li>
+              <li><a href="{{ url_for('tag', color='')}}">Work</a></li>
+              <li><a href="{{ url_for('tag', color='')}}">Friends</a></li>
+          </menu>
+      </div>
+      <div class="message-container">
+         <header>
+             <div class="search">
+               <i class="fa-solid fa-magnifying-glass"></i>
+               <input type="text" name="search">
+             </div>
+             <div class="message-menu">
+                 <menu>
+                    <li><i class="fa-solid fa-envelope"></i> Messages</li>
+                    <li><i class="fa-solid fa-pencil"></i> Drafts</li>
+                    <li><i class="fa-solid fa-paper-plane"></i> Sent</li>
+                 </menu>
+             </div>
+             <div class="menu-theme">
+                 <menu>
+                    <li></li>
+                    <li></li>
+                    <li><img src="{{ url_for('static', filename='images/image9.png')}}" alt=""></li>
+                 </menu>
+             </div>
+         </header>
+         <main>
+             <div class="main-sidebar">
+                <div class="sort-filter">
+                   <select name="sort">
+                      <option value="">Sort</option>
+                      <option value="">A-Z</option>
+                      <option value="">Date</option>
+                   </select>
+                   <span>Today</span>
+                </div>
+                <div class="sender-details">
+                    <div class="left-content">
+                        <img src="{{ url_for('static', filename='images/image1.png') }}" alt="">
+                    </div>
+                    <div class="right-content">
+                       <p><span>Anna Slovaski</span>Sept 1</p>
+                       <p>UI Designer position</p>
+                       <p>Hello, I'm interested in your position at Encore...</p>
+                    </div>
+                </div>
+                <div class="sender-details">
+                    <div class="left-content">
+                        <img src="{{ url_for('static', filename='images/image1.png') }}" alt="">
+                    </div>
+                    <div class="right-content">
+                       <p><span>Anna Slovaski</span>Sept 1</p>
+                       <p>UI Designer position</p>
+                       <p>Hello, I'm interested in your position at Encore...</p>
+                    </div>
+                </div>
+                <div class="sender-details">
+                    <div class="left-content">
+                        <img src="{{ url_for('static', filename='images/image1.png') }}" alt="">
+                    </div>
+                    <div class="right-content">
+                       <p><span>Anna Slovaski</span>Sept 1</p>
+                       <p>UI Designer position</p>
+                       <p>Hello, I'm interested in your position at Encore...</p>
+                    </div>
+                </div>
+                <div class="sender-details">
+                    <div class="left-content">
+                        <img src="{{ url_for('static', filename='images/image1.png') }}" alt="">
+                    </div>
+                    <div class="right-content">
+                       <p><span>Anna Slovaski</span>Sept 1</p>
+                       <p>UI Designer position</p>
+                       <p>Hello, I'm interested in your position at Encore...</p>
+                    </div>
+                </div>
+             </div>
+             <div class="main-content">
+                <img src="{{ url_for('static', filename='images/cloud-solid.svg')}}">
+                <h4>No messages</h4>
+             </div>
+         </main>
+      </div>
+  </div>
+</div>
+{% endblock %}
