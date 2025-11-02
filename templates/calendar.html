@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <div class="row-container">
+     {% include 'partials/menu.html' %}
+      <div class="message-container">
+         {% include 'partials/filter.html' %}
+         <main>
+             <div class="main-sidebar">
+                <header>
+                    <p>{{ current_day }}</p>
+                    <h3>{{ current_date }}</h3>
+                </header>
+                <div class="schedule">
+                    <h4>Your schedule</h4>
+                    <ul>
+                      <li class="tag">Job interview<span>10:00am</span></li>
+                      <li>Work</li>
+                      <li>Venue 1234 Somewhere Dr Neverland, Ca<span><a href="">remove</a></span></li>
+                    </ul>
+                    <ul>
+                      <li class="tag">Lunch with Diana<span>2:30pm</span></li>
+                      <li>Date</li>
+                      <li>Venue 1234 Somewhere Dr Neverland, Ca<span><a href="">remove</a></span></li>
+                    </ul>
+                    <button type="button" id="add-event">Add event</button>
+                </div>
+             </div>
+             <div class="main-content">
+                {{ cal }}
+             </div>
+         </main>
+      </div>
+  </div>
+</div>
+{% endblock %}

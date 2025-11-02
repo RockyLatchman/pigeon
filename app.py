@@ -3,6 +3,9 @@ from dotenv import load_dotenv
 from flask_wtf import CSRFProtect
 from sqlmodel import Session, create_engine
 import os
+import datetime
+import calendar
+
 
 load_dotenv('.env')
 
@@ -33,16 +36,27 @@ def contacts():
     return render_template('contacts.html')
 
 @app.route('/calendar')
-def calendar():
+def pigeon_calendar():
+    user_calendar = calendar.HTMLCalendar(firstweekday=0)
+    current_date = datetime.datetime.today()
+    return render_template(
+        'calendar.html',
+        current_day=current_date.strftime('%A'),
+        current_date=current_date.strftime('%d'),
+        cal=user_calendar.formatmonth(current_date.year, current_date.month)
+    )
+
+@app.route('/calendar/event', methods=['POST'])
+def calendar_event():
     pass
 
 @app.route('/storage')
 def storage():
-    pass
+    return render_template('storage.html')
 
 @app.route('/settings')
 def settings():
-    pass
+    return render_template('settings.html')
 
 @app.route('/tags/<color>')
 def tag(color):
