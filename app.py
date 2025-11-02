@@ -22,7 +22,7 @@ def register():
 
 @app.route('/signout')
 def signout():
-    pass
+    return render_template('signout.html')
 
 @app.route('/inbox')
 def inbox():
