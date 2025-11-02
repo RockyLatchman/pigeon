@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container signin">
+<div class="container">
   <header>
       <h2>Pigeon</h2>
   </header>
   <main>
+    <div id="register">
       <form method="POST">
          <h3>Register</h3>
          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
@@ -14,6 +15,7 @@
          <input type="submit" name="submit" value="Sign into account">
          <input type="submit" name="submit" value="Sign up for account">
       </form>
+    </div>
   </main>
 </div>
 {% endblock %}

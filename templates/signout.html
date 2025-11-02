@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <header>
+      <h2>Pigeon</h2>
+  </header>
+  <main>
+     <div id="signout">
+       <h3>You&apos;re signed out</h3>
+       <p>Thanks for using Pigeon</p>
+       <p><a href="{{ url_for('index')}}">Sign back in</a></p>
+     </div>
+  </main>
+</div>
+{% endblock %}
