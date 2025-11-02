@@ -77,6 +77,24 @@
                        </ul>
                     </div>
                 </div>
+                <div class="contact-form">
+                   <header>
+                       <span>
+                           <img src="{{ url_for('static', filename='images/user-solid.svg') }}" alt="">
+                           <img src="{{ url_for('static', filename='images/user-pen-solid.svg') }}" alt="">
+                       </span>
+                       <h4>Add contact</h4>
+                   </header>
+                   <form method="POST">
+                       <input type="text" name="name" placeholder="Name">
+                       <input type="email" name="email" placeholder="E-mail">
+                       <input type="text" name="company" placeholder="Company">
+                       <input type="text" name="title" placeholder="Title">
+                       <input type="tel" name="mobile" placeholder="Mobile">
+                       <textarea name="note" placeholder="Note"></textarea>
+                       <input type="submit" name="submit" value="Add contact">
+                   </form>
+                </div>
              </div>
          </main>
       </div>
