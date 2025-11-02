@@ -12,13 +12,13 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 db_engine = create_engine(app.config['DATABASE_URL'], echo=True)
 csrf_token = CSRFProtect(app)
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
     return render_template('index.html')
 
-@app.route('/register')
+@app.route('/register', methods=['GET', 'POST'])
 def register():
-    pass
+    return render_template('register.html')
 
 @app.route('/signout')
 def signout():

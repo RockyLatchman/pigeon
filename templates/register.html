@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container signin">
+  <header>
+      <h2>Pigeon</h2>
+  </header>
+  <main>
+      <form method="POST">
+         <h3>Register</h3>
+         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+         <input type="text" name="name" placeholder="Your name">
+         <input type="email" name="email" placeholder="E-mail">
+         <input type="password" name="password" placeholder="Password">
+         <input type="submit" name="submit" value="Sign into account">
+         <input type="submit" name="submit" value="Sign up for account">
+      </form>
+  </main>
+</div>
+{% endblock %}
