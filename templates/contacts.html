@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <div class="row-container">
+     {% include 'partials/menu.html' %}
+      <div class="message-container">
+         {% include 'partials/filter.html' %}
+         <main>
+             <div class="main-sidebar">
+                <header>
+                   <span><img src="{{ url_for('static', filename='images/user-plus-solid.svg') }}" alt=""></span>
+                   <h3>Contacts</h3>
+                </header>
+                <div class="contact">
+                    <div class="left-content">
+                        <span class="tag"></span>
+                        <span class="status"><img src="{{ url_for('static', filename='images/image1.png') }}" alt=""></span>
+                    </div>
+                    <div class="right-content">
+                       <span>Keisha James</span>
+                       <p>Designer</p>
+                    </div>
+                </div>
+                <div class="contact">
+                    <div class="left-content">
+                       <span class="tag"></span>
+                       <span class="status"><img src="{{ url_for('static', filename='images/image5.png') }}" alt=""></span>
+                    </div>
+                    <div class="right-content">
+                        <span>Devon Anderson</span>
+                        <p>Digital Marketer</p>
+                    </div>
+                </div>
+                <div class="contact">
+                    <div class="left-content">
+                        <span class="tag"></span>
+                        <span class="status"><img src="{{ url_for('static', filename='images/image7.png') }}" alt=""></span>
+                    </div>
+                    <div class="right-content">
+                        <span>Tasha Watkins</span>
+                        <p>Software Engineer</p>
+                    </div>
+                </div>
+                <div class="contact">
+                    <div class="left-content">
+                        <span class="tag"></span>
+                        <span class="status"><img src="{{ url_for('static', filename='images/image8.png') }}" alt=""></span>
+                    </div>
+                    <div class="right-content">
+                        <span>Amy Collins</span>
+                        <p>UI/UX Designer</p>
+                    </div>
+                </div>
+             </div>
+             <div class="main-content">
+                <div class="contact">
+                    <header>
+                       <span><img src="{{ url_for('static', filename='images/user-pen-solid.svg') }}" alt=""></span>
+                       <span class="tag"></span>
+                       <span class="status"><img src="{{ url_for('static', filename='images/image7.png') }}" alt=""></span>
+                       <ul>
+                         <li>Tasha Watkins</li>
+                         <li>Software Engineer</li>
+                         <li>@TechVision</li>
+                       </ul>
+                    </header>
+                    <div class="contact-details">
+                       <h4>Contact details</h4>
+                       <ul>
+                         <li>Email twatkins@ex.net</li>
+                         <li>Mobile +19095151234</li>
+                         <li>Address 1234 Somwhere Dr</li>
+                       </ul>
+                       <ul>
+                         <li><button type="button" name="video-call"><i class="fa-solid fa-video"></i>Video call Tasha</button></li>
+                         <li><button type="button" name="remove">Remove contact</button></li>
+                       </ul>
+                    </div>
+                </div>
+             </div>
+         </main>
+      </div>
+  </div>
+</div>
+{% endblock %}
