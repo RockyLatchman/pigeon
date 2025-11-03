@@ -9,13 +9,13 @@
              <div class="main-sidebar">
                 <div class="sort-filter">
                    <select name="sort">
-                      <option value="">Sort</option>
-                      <option value="">A-Z</option>
-                      <option value="">Date</option>
+                      <option value="sort">Sort &#8964;</option>
+                      <option value="az">A-Z &#8964;</option>
+                      <option value="date">Date &#8964;</option>
                    </select>
                    <span>Today</span>
                 </div>
-                <div class="sender-details">
+                <div class="sender-details first">
                     <div class="left-content">
                        <span class="tag"></span>
                        <span class="status"><img src="{{ url_for('static', filename='images/image1.png') }}" alt=""></span>
@@ -69,8 +69,10 @@
                                   <img src="{{ url_for('static', filename='images/image1.png') }}" alt="">
                                </div>
                                <div class="right-content">
-                                 <h4>Joan Williamson</h4>
-                                 <p>Obsidian</p>
+                                 <div>
+                                     <h4>Joan Williamson</h4>
+                                     <p>Obsidian</p>
+                                 </div>
                                  <ul>
                                    <li><i class="fa-solid fa-trash-can"></i></li>
                                    <li><i class="fa-solid fa-video"></i></li>
@@ -79,7 +81,7 @@
                             </div>
                         </header>
                         <div class="message">
-                            <span>Sept 2, 2025</span>
+                            <span class="message-date">Sept 2, 2025</span>
                             <h4>Web Developer position</h4>
                             <p>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur viverra tellus a turpis dapibus venenatis. Ut nec dolor mauris. Praesent porta lacus eget faucibus bibendum. Nulla facilisi. Quisque tortor tellus, blandit vel elit at, interdum luctus augue. Nunc eget imperdiet augue, nec pellentesque lacus. Aliquam eget nunc at nunc bibendum porttitor. Mauris sed massa vel nibh vulputate finibus. Nullam vitae molestie elit. Suspendisse at nisl non velit rutrum gravida. Aenean quis mi urna. Aenean egestas eros at eros viverra, eu volutpat tellus condimentum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
@@ -90,8 +92,10 @@
                             </p>
                             <div id="message-reply">
                                 <input type="text" name="message-reply" placeholder="Reply here">
-                                <span id="add-attachment"><i class="fa-solid fa-paperclip"></i></span>
-                                <span id="send-message"><a href="{{ send_message }}"><i class="fa-solid fa-paper-plane"></i></a></span>
+                                <ul>
+                                   <li><span id="add-attachment"><i class="fa-solid fa-paperclip"></i></span></li>
+                                   <li><span id="send-message"><a href="{{ send_message }}"><i class="fa-solid fa-paper-plane"></i></a></span></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
