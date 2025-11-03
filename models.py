@@ -162,6 +162,9 @@ class Storage(SQLModel, table=True):
    def retrieve_items():
        pass
 
+   def item_filter():
+       pass
+
    def disk_usage():
        #a user gets 2GB
        pass

@@ -1,0 +1,338 @@
+* {
+padding: 0;
+margin: 0;
+}
+
+html {
+box-sizing: border-box;
+}
+
+:root {
+--sidebar-color: #FAFAFA;
+--dark-gray: #5D5D5D;
+--hot-pink: #DE067A;
+--green: #27C463;
+--gray-border: #E6E6E6;
+--icons: #AFAFAF;
+--dark-gray-headings: #5A5A5A;
+--sidebar-links: normal 500 1em "dejanire-sans", sans-serif;
+--sidebar-link-color: #717070;
+}
+
+menu li, ul li {
+list-style-type: none;
+}
+
+menu li i {
+font-size: 0.9em;
+margin-right: 15px;
+color: var(--icons);
+}
+
+.row-container {
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+}
+
+.menu-sidebar {
+background: var(--sidebar-color);
+width: 15%;
+height: 100vh;
+padding: 35px;
+}
+
+/*
+
+.tk-fatfrank { font-family: "fatfrank",sans-serif; }
+.tk-mr-eaves-modern { font-family: "mr-eaves-modern",sans-serif; }
+.tk-mr-eaves-sans { font-family: "mr-eaves-sans",sans-serif; }
+.tk-mr-eaves-xl-modern { font-family: "mr-eaves-xl-modern",sans-serif; }
+.tk-dejanire-sans { font-family: "dejanire-sans",sans-serif; }
+
+
+*/
+
+
+.menu-sidebar header h2 {
+font: normal 1.6em "fatfrank",sans-serif;
+text-transform: uppercase;
+color: #535353;
+}
+
+.menu-sidebar h4 {
+font: normal 900 1em "fatfrank",sans-serif;
+color: #535353;
+margin: 50px 0 15px 0;
+}
+
+.menu-sidebar menu {
+margin-top: 25px;
+}
+
+.menu-sidebar menu li img {
+width: 24px;
+height: 24px;
+vertical-align: middle;
+margin-right: 8px;
+}
+
+.menu-sidebar menu:first-of-type li {
+display: inline-block;
+vertical-align: middle;
+margin-bottom: 20px;
+width: 100%;
+height: 24px;
+line-height: 3.4em;
+}
+
+.menu-sidebar menu:last-of-type li {
+margin-bottom: 8px;
+}
+
+.menu-sidebar menu li a {
+color: var(--sidebar-link-color);
+font: var(--sidebar-links);
+text-decoration: none;
+}
+
+/* messages */
+
+.message-container {
+width: 80%;
+height: 100vh;
+}
+
+.message-container header:first-of-type {
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+align-items: center;
+height: 75px;
+border-left: 1px solid rgba(212,212,212,0.5);
+border-bottom: 1px solid rgba(212,212,212,0.5);
+}
+
+.message-container header:first-of-type .search {
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+width: 25%;
+}
+
+.message-container header:first-of-type .search .fa-magnifying-glass {
+color: var(--dark-gray);
+}
+
+.message-container header:first-of-type .search input[type='text'] {
+width: 90%;
+height: 30px;
+border: none;
+margin-left: 10px;
+outline: transparent;
+font: normal 100 0.9em "dejanire-sans", sans-serif;
+}
+
+.message-container header:first-of-type .search input[type='text']:hover {
+border-bottom: 1px solid rgba(212,212,212,0.5);
+}
+
+.message-container header:first-of-type .menu-theme {
+width: 15%;
+}
+
+.message-menu menu {
+display: flex;
+flex-direction: row;
+border: 1px solid rgba(212,212,212,0.5);
+border-radius: 8px;
+width: 100%;
+height: 35px;
+}
+
+.message-menu menu li {
+display: flex;
+width: 120px;
+justify-content: center;
+align-items: center;
+font: normal 100 0.9em "dejanire-sans", sans-serif;
+color: var(--dark-gray);
+border-right: 1px solid rgba(212,212,212,0.5);
+}
+
+.message-menu menu li:last-of-type {
+border-right: none;
+}
+
+.message-container header img {
+width: 32px;
+height: 32px;
+float: right;
+}
+
+main {
+overflow-y: hidden;
+height: auto;
+display: flex;
+flex-direction: row;
+justify-content: space-evenly;
+}
+
+main .main-sidebar {
+width: 25%;
+height: auto;
+border-left: 1px solid rgba(212,212,212,0.5);
+border: 1px solid rgba(212,212,212,0.5);
+}
+
+main .main-sidebar header {
+flex-direction: column !important;
+text-align: center;
+margin: 15px 0;
+padding: 10px 0;
+width: 100%;
+border: none !important;
+}
+
+main .main-sidebar header h3 {
+font: normal 900 3em "fatfrank",sans-serif;
+color: var(--dark-gray);
+width: 100%;
+}
+
+main .main-sidebar header p {
+width: 100%;
+font: normal 100 1em "dejanire-sans", sans-serif;
+color: var(--dark-gray);
+}
+
+main .schedule {
+justify-content: space-around;
+width: 100%;
+padding-top: 10px;
+}
+
+main .schedule h4 {
+font: normal 500 1em "dejanire-sans", sans-serif;
+color: var(--dark-gray);
+margin-bottom: 10px;
+padding: 5px 8px;
+border-bottom: 1px solid rgba(212,212,212,0.5);
+}
+
+main .schedule ul {
+border-bottom: 1px solid rgba(212,212,212,0.5);
+margin: 15px 0;
+padding: 0 8px;
+}
+
+main .schedule ul li  {
+display: inline-block !important;
+width: 100%;
+font: normal 100 0.9em "dejanire-sans", sans-serif;
+color: var(--dark-gray);
+margin: 2px 0;
+}
+
+main .schedule ul li:first-of-type {
+font-weight: 800;
+}
+
+main .schedule ul li:last-of-type span a {
+font-weight: 800;
+color: var(--dark-gray);
+}
+
+main .schedule ul li span:first-of-type {
+width: 25%;
+font: normal 100 1em "dejanire-sans", sans-serif;
+color: var(--dark-gray);
+}
+
+main .schedule ul li span:last-of-type {
+width: 25%;
+font: normal 100 1em "dejanire-sans", sans-serif;
+color: var(--dark-gray);
+float: right;
+}
+
+main .schedule ul li .remove {
+float: right;
+margin: 15px 0;
+font: normal 100 0.8em "dejanire-sans", sans-serif;
+}
+
+main .schedule button{
+background: var(--green);
+color: #fafafa;
+border: none;
+border-radius: 10px;
+width: 130px;
+height: 40px;
+margin: 10px 0 0 15px;
+font: normal 700 0.8em "dejanire-sans", sans-serif;
+cursor: pointer;
+}
+
+
+main .main-content{
+width: 75%;border-left: 1px solid rgba(212,212,212,0.5);
+height: auto;
+border-left: 1px solid rgba(212,212,212,0.5);
+}
+
+
+
+
+table {
+width: 100%;
+height: auto;
+border: none;
+}
+
+table tr {
+font: normal 100 1em "dejanire-sans", sans-serif;
+height: 50px;
+}
+
+table th {
+font: normal 500 1em "dejanire-sans", sans-serif;
+border-top: 1px solid rgb(239, 239, 239);
+}
+
+table tr td {
+font: normal 100 0.9em "dejanire-sans", sans-serif;
+padding: 2%;
+text-align: right;
+color: #201f1f;
+width: 65px;
+height: 65px;
+border: 1px solid rgba(239, 239, 239, 0.8);
+}
+
+
+table tr td #selectedItem {
+background: #fe176c;
+color: #fafafa;
+padding: 5px 5px;
+display: inline-block;
+width: 15px;
+height: 15px;
+border-radius: 50%;
+text-align: center;
+}
+
+#hide {
+display: none;
+}
+
+
+
+table .month {
+ font: normal 100 3em "dejanire-sans", sans-serif;
+color: var(--dark-gray);
+text-align: left;
+padding-left: 50px;
+height: 100px;
+}
