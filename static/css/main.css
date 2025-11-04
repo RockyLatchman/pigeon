@@ -769,3 +769,158 @@ margin: 10px 0 0 5px;
 font: normal 700 0.8em "dejanire-sans", sans-serif;
 cursor: pointer;
 }
+
+/* Storage */
+
+main .main-sidebar header .disk-usage-bar {
+display: flex;
+flex-direction: row;
+justify-content: flex-start;
+width: 250px;
+height: 25px;
+border-radius: 15px;
+background:#EBEBEB;
+margin: 15px auto 0 auto;
+}
+
+main .main-sidebar header p img {
+width: 21px;
+height: 21px;
+float: left;
+margin: 0 auto 0 15px;
+}
+
+main .main-sidebar header p {
+width: 50%;
+margin: 15px auto 15px 0;
+font: normal 100 0.9em "dejanire-sans", sans-serif;
+color: var(--dark-gray);
+}
+
+main .main-sidebar header span {
+display: inline;
+font: normal 900 0.9em "dejanire-sans", sans-serif;
+color: var(--dark-gray);
+}
+
+main .disk-usage-bar .document-usage-bar {
+width: 75px;
+height: 25px;
+border-radius: 15px 0 0 15px;
+background:#DE067A;
+}
+
+main .disk-usage-bar .image-usage-bar {
+width: 25px;
+height: 25px;
+background:#FAC5C5;
+}
+
+main .disk-usage-bar .audio-usage-bar {
+width: 25px;
+height: 25px;
+background:#ccc;
+}
+
+main .main-sidebar header ul {
+margin-top: 25px;
+width: 100%;
+border-bottom: 1px solid #ccc;
+}
+
+main .main-sidebar header ul li {
+width: 50%;
+display: block !important;
+margin-right: auto;
+}
+
+main .main-sidebar header ul li:nth-child(odd) {
+font: normal 800 1em "dejanire-sans", sans-serif;
+color:#201f1f;
+text-decoration: underline;
+}
+
+main .main-sidebar header ul li:nth-child(even) {
+font: normal 100 1em "dejanire-sans", sans-serif;
+color:#5A5A5A;
+margin-bottom: 15px;
+padding: 3px 0 5px 0;
+}
+
+
+.main-content .documents .document-header {
+width: 85%;
+height: 50px;
+margin: 25px auto 0 auto;
+border: none;
+}
+
+.main-content .documents  {
+width: 100%;
+}
+
+.main-content .documents .document-header  h4 {
+font: normal 100 1.4em "dejanire-sans", sans-serif;
+text-transform: uppercase;
+color:#5A5A5A;
+text-align: left;
+margin-right: auto;
+}
+
+.main-content .documents header select {
+border-radius: 5px;
+background: #fafafa;
+border: 1px solid #ccc;
+font: normal 100 0.9em "dejanire-sans", sans-serif;
+width: 120px;
+height: 25px;
+}
+
+.main-content .content-card {
+border: 1px solid rgba(200,200,200,0.5);
+border-radius: 10px;
+width: 85%;
+margin: 40px auto 0 auto;
+}
+
+.main-content .content-card header ul {
+display: flex;
+flex-direction: row;
+width: 100%;
+}
+
+.main-content .content-card header ul li {
+display: flex;
+flex-direction: row;
+justify-content: space-evenly;
+align-items: center;
+font: normal 600 1em "dejanire-sans", sans-serif;
+color:#5A5A5A;
+width: 25%;
+}
+
+.main-content .content-card .content  {
+width: 100%;
+}
+
+.main-content .content-card .content ul  {
+display: flex;
+flex-direction: row;
+width: 100%;
+border-bottom: 1px solid rgba(200,200,200,0.5);
+}
+
+.main-content .content-card .content ul li {
+display: flex;
+flex-direction: row;
+justify-content: space-evenly;
+align-items: center;
+font: normal 100 1em "dejanire-sans", sans-serif;
+color:#5A5A5A;
+width: 25%;
+padding: 15px 0;
+}
+
+.kebab-menu {
+cursor: pointer;
+}

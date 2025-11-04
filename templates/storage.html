@@ -8,12 +8,18 @@
          <main>
              <div class="main-sidebar">
                 <header>
-                   <h3>Storage</h3>
-                   <span><img src="{{ url_for('static', filename='images/hard-drive-solid.svg') }}" alt=""> USED 1GB</span>
-                   <div class="disk-usage-bar"></div>
+                   <h4>Storage</h4>
+                   <p><img src="{{ url_for('static', filename='images/hard-drive-solid.svg') }}" alt=""><span>2GB</span> USED 1GB</p>
+                   <div class="disk-usage-bar">
+                      <div class="document-usage-bar"></div>
+                      <div class="image-usage-bar"></div>
+                      <div class="audio-usage-bar"></div>
+                   </div>
                    <ul>
                      <li>85% photos</li>
                      <li>1,234 photos</li>
+                   </ul>
+                   <ul>
                      <li>15% music</li>
                      <li>1,234 songs</li>
                    </ul>
@@ -21,8 +27,8 @@
              </div>
              <div class="main-content">
                 <div class="documents">
-                    <header>
-                        <h3>All documents</h3>
+                    <header class="document-header">
+                        <h4>All documents</h4>
                         <select name="document-filter">
                             <option value="documents">Documents</option>
                             <option value="audio">Audio</option>
