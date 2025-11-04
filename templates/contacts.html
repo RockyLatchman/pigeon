@@ -9,7 +9,7 @@
              <div class="main-sidebar">
                 <header>
                    <span><img src="{{ url_for('static', filename='images/user-plus-solid.svg') }}" alt=""></span>
-                   <h3>Contacts</h3>
+                   <h4>Contacts</h4>
                 </header>
                 <div class="contact">
                     <div class="left-content">
@@ -55,9 +55,11 @@
              <div class="main-content">
                 <div class="contact">
                     <header>
-                       <span><img src="{{ url_for('static', filename='images/user-pen-solid.svg') }}" alt=""></span>
-                       <span class="tag"></span>
-                       <span class="status"><img src="{{ url_for('static', filename='images/image7.png') }}" alt=""></span>
+                      <div>
+                          <span class="edit-contact"><img src="{{ url_for('static', filename='images/user-pen-solid.svg') }}" alt=""></span>
+                          <span class="tag"></span>
+                          <span class="status"><img src="{{ url_for('static', filename='images/image7.png') }}" alt=""></span>
+                      </div>
                        <ul>
                          <li>Tasha Watkins</li>
                          <li>Software Engineer</li>
@@ -72,20 +74,19 @@
                          <li>Address 1234 Somwhere Dr</li>
                        </ul>
                        <ul>
-                         <li><button type="button" name="video-call"><i class="fa-solid fa-video"></i>Video call Tasha</button></li>
-                         <li><button type="button" name="remove">Remove contact</button></li>
+                         <li><button type="button" id="video-call" name="video-call"><i class="fa-solid fa-video"></i>&nbsp;Video call Tasha</button></li>
+                         <li><button type="button" id="remove-contact" name="remove">Remove contact</button></li>
                        </ul>
                     </div>
                 </div>
                 <div class="contact-form">
                    <header>
                        <span>
-                           <img src="{{ url_for('static', filename='images/user-solid.svg') }}" alt="">
                            <img src="{{ url_for('static', filename='images/user-pen-solid.svg') }}" alt="">
                        </span>
-                       <h4>Add contact</h4>
                    </header>
                    <form method="POST">
+                       <h4>Add contact</h4>
                        <input type="text" name="name" placeholder="Name">
                        <input type="email" name="email" placeholder="E-mail">
                        <input type="text" name="company" placeholder="Company">
