@@ -8,12 +8,8 @@
          <main>
              <div class="main-content">
                <div class="settings">
-                   <header>
-                       <h4>Settings</h4>
-                       <span><img src="{{ url_for('static', filename='images/image9.png') }}" alt=""></span>
-                       <h4>Joan Williams</h4>
-                   </header>
                    <form method="POST">
+                       <h4>Settings</h4>
                        <input type="text" name="name" placeholder="Name">
                        <input type="email" name="email" placeholder="E-mail">
                        <input type="text" name="" placeholder="Company">
@@ -24,7 +20,6 @@
                            <option value="invisible">Invisible</option>
                            <option value="away">Away</option>
                        </select>
-                        <label>Location</label>
                        <input type="text" name="city" placeholder="City">
                        <select name="state">
                          <option value="AL">Alabama</option>
@@ -325,7 +320,7 @@
                            <option value="Zambia">Zambia</option>
                            <option value="Zimbabwe">Zimbabwe</option>
                        </select>
-                       <textarea name="bio" placeholder="About me"></textarea>
+                       <textarea name="bio" placeholder="About me"></textarea><br>
                        <input type="submit" name="submit" value="Save changes">
                    </form>
                </div>
