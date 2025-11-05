@@ -4,6 +4,13 @@ function getCurrentDate() {
   return day;
 }
 
+const calendarEvent = ``;
+const sidePanel = ``;
+const editContactForm = ``;
+const videoContentWindow = ``;
+const storageMenu = ``;
+
+
 function switchForm() {
   /* load Edit contact form  */
 }
