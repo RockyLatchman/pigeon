@@ -4,6 +4,41 @@ function getCurrentDate() {
   return day;
 }
 
+function switchForm() {
+  /* load Edit contact form  */
+}
+
+function loadPanel() {
+  /* load side panel with the appropriate form (video, storage item)*/
+}
+
+function loadOverlayWindow() {
+}
+
+function startVideoCall() {
+
+}
+
+function endVideoCall() {
+
+}
+
+function removePanel() {
+
+}
+
+function highlightSearchField() {
+  //add border bottom on magnify button click
+}
+
+function addCalendarEvent() {
+
+}
+
+function opendialogMenu() {
+
+}
+
 
 function highlightDate() {
   /*get the dates from the cells, iterate over them

@@ -53,6 +53,7 @@ def pigeon_calendar():
 
 @app.route('/calendar/event', methods=['POST'])
 def calendar_event():
+    #remove or add event to calendar
     pass
 
 @app.route('/storage')

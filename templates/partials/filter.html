@@ -4,12 +4,15 @@
       <input type="text" name="search">
     </div>
     <div class="message-menu">
+      {% if request.endpoint == 'inbox' %}
         <menu>
-        <li><i class="fa-solid fa-envelope"></i> Messages</li>
-        <li><i class="fa-solid fa-pencil"></i> Drafts</li>
-        <li><i class="fa-solid fa-paper-plane"></i> Sent</li>
+          <li><i class="fa-solid fa-envelope"></i> Messages</li>
+          <li><i class="fa-solid fa-pencil"></i> Drafts</li>
+          <li><i class="fa-solid fa-paper-plane"></i> Sent</li>
         </menu>
+      {% endif %}
     </div>
+
     <div class="menu-theme">
         <menu>
         <li></li>
