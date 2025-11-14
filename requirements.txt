@@ -10,6 +10,7 @@ MarkupSafe==3.0.3
 psycopg2-binary==2.9.11
 pydantic==2.12.3
 pydantic_core==2.41.4
+pyfiglet==1.0.4
 python-dotenv==1.2.1
 SQLAlchemy==2.0.44
 sqlmodel==0.0.27
