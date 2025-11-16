@@ -1,0 +1,191 @@
+{% if request.endpoint == 'inbox' %}
+<div class="main-sidebar">
+    <div class="sort-filter">
+        <select name="sort">
+            <option value="sort">Sort &#8964;</option>
+            <option value="az">A-Z &#8964;</option>
+            <option value="date">Date &#8964;</option>
+        </select>
+        <span>Today</span>
+    </div>
+    <div class="sender-details first">
+        <div class="left-content">
+            <span class="tag"></span>
+            <span class="status"
+                ><img
+                    src="{{ url_for('static', filename='images/image1.png') }}"
+                    alt=""
+            /></span>
+        </div>
+        <div class="right-content">
+            <p><span>Anna Slovaski</span>Sept 1</p>
+            <p>UI Designer position</p>
+            <p>Hello, I'm interested in your position at Encore...</p>
+        </div>
+    </div>
+    <div class="sender-details">
+        <div class="left-content">
+            <span class="tag"></span>
+            <span class="status"
+                ><img
+                    src="{{ url_for('static', filename='images/image1.png') }}"
+                    alt=""
+            /></span>
+        </div>
+        <div class="right-content">
+            <p><span>Anna Slovaski</span>Sept 1</p>
+            <p>UI Designer position</p>
+            <p>Hello, I'm interested in your position at Encore...</p>
+        </div>
+    </div>
+    <div class="sender-details">
+        <div class="left-content">
+            <span class="tag"></span>
+            <span class="status"
+                ><img
+                    src="{{ url_for('static', filename='images/image1.png') }}"
+                    alt=""
+            /></span>
+        </div>
+        <div class="right-content">
+            <p><span>Anna Slovaski</span>Sept 1</p>
+            <p>UI Designer position</p>
+            <p>Hello, I'm interested in your position at Encore...</p>
+        </div>
+    </div>
+    <div class="sender-details">
+        <div class="left-content">
+            <span class="tag"></span>
+            <span class="status"
+                ><img
+                    src="{{ url_for('static', filename='images/image1.png') }}"
+                    alt=""
+            /></span>
+        </div>
+        <div class="right-content">
+            <p><span>Anna Slovaski</span>Sept 1</p>
+            <p>UI Designer position</p>
+            <p>Hello, I'm interested in your position at Encore...</p>
+        </div>
+    </div>
+</div>
+{% elif request.endpoint == 'contacts' %}
+<div class="main-sidebar">
+    <header>
+        <span
+            ><img
+                src="{{ url_for('static', filename='images/user-plus-solid.svg') }}"
+                alt=""
+        /></span>
+        <h4>Contacts</h4>
+    </header>
+    <div class="contact">
+        <div class="left-content">
+            <span class="tag"></span>
+            <span class="status"
+                ><img
+                    src="{{ url_for('static', filename='images/image1.png') }}"
+                    alt=""
+            /></span>
+        </div>
+        <div class="right-content">
+            <span>Keisha James</span>
+            <p>Designer</p>
+        </div>
+    </div>
+    <div class="contact">
+        <div class="left-content">
+            <span class="tag"></span>
+            <span class="status"
+                ><img
+                    src="{{ url_for('static', filename='images/image5.png') }}"
+                    alt=""
+            /></span>
+        </div>
+        <div class="right-content">
+            <span>Devon Anderson</span>
+            <p>Digital Marketer</p>
+        </div>
+    </div>
+    <div class="contact">
+        <div class="left-content">
+            <span class="tag"></span>
+            <span class="status"
+                ><img
+                    src="{{ url_for('static', filename='images/image7.png') }}"
+                    alt=""
+            /></span>
+        </div>
+        <div class="right-content">
+            <span>Tasha Watkins</span>
+            <p>Software Engineer</p>
+        </div>
+    </div>
+    <div class="contact">
+        <div class="left-content">
+            <span class="tag"></span>
+            <span class="status"
+                ><img
+                    src="{{ url_for('static', filename='images/image8.png') }}"
+                    alt=""
+            /></span>
+        </div>
+        <div class="right-content">
+            <span>Amy Collins</span>
+            <p>UI/UX Designer</p>
+        </div>
+    </div>
+</div>
+{% elif request.endpoint == 'pigeon_calendar' %}
+<div class="main-sidebar calendar">
+    <header>
+        <p>{{ current_day }}</p>
+        <h3>{{ current_date }}</h3>
+    </header>
+    <div class="schedule">
+        <h4>Your schedule</h4>
+        <ul>
+            <li class="tag">Job interview<span>10:00am</span></li>
+            <li>Work</li>
+            <li>
+                <span>Venue 1234 Somewhere Dr Neverland, Ca</span
+                ><span class="remove"><a href="">remove</a></span>
+            </li>
+        </ul>
+        <ul>
+            <li class="tag">Lunch with Diana<span>2:30pm</span></li>
+            <li>Date</li>
+            <li>
+                <span>Venue 1234 Somewhere Dr Neverland, Ca</span
+                ><span class="remove"><a href="">remove</a></span>
+            </li>
+        </ul>
+        <button type="button" id="add-event">Add event</button>
+    </div>
+</div>
+{% elif request.endpoint == 'storage' %}
+<div class="main-sidebar">
+    <header>
+        <h4>Storage</h4>
+        <p>
+            <img
+                src="{{ url_for('static', filename='images/hard-drive-solid.svg') }}"
+                alt=""
+            /><span>2GB</span> USED 1GB
+        </p>
+        <div class="disk-usage-bar">
+            <div class="document-usage-bar"></div>
+            <div class="image-usage-bar"></div>
+            <div class="audio-usage-bar"></div>
+        </div>
+        <ul>
+            <li>85% photos</li>
+            <li>1,234 photos</li>
+        </ul>
+        <ul>
+            <li>15% music</li>
+            <li>1,234 songs</li>
+        </ul>
+    </header>
+</div>
+{% endif %}

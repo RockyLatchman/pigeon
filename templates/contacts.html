@@ -1,116 +1,118 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <div class="container">
-  <div class="row-container">
-     {% include 'partials/menu.html' %}
-      <div class="message-container">
-         {% include 'partials/filter.html' %}
-         <main>
-             <div class="main-sidebar">
-                <header>
-                   <span><img src="{{ url_for('static', filename='images/user-plus-solid.svg') }}" alt=""></span>
-                   <h4>Contacts</h4>
-                </header>
-                <div class="contact">
-                    <div class="left-content">
-                        <span class="tag"></span>
-                        <span class="status"><img src="{{ url_for('static', filename='images/image1.png') }}" alt=""></span>
+    <div class="row-container">
+        {% include 'partials/menu.html' %}
+        <div class="message-container">
+            {% include 'partials/filter.html' %}
+            <main>
+                {% include 'partials/sidebar.html' %}
+                <div class="main-content">
+                    <div class="contact">
+                        <header>
+                            <div>
+                                <span class="edit-contact"
+                                    ><img
+                                        src="{{ url_for('static', filename='images/user-pen-solid.svg') }}"
+                                        alt=""
+                                /></span>
+                                <span class="tag"></span>
+                                <span class="status"
+                                    ><img
+                                        src="{{ url_for('static', filename='images/image7.png') }}"
+                                        alt=""
+                                /></span>
+                            </div>
+                            <ul>
+                                <li>Tasha Watkins</li>
+                                <li>Software Engineer</li>
+                                <li>@TechVision</li>
+                            </ul>
+                        </header>
+                        <div class="contact-details">
+                            <h4>Contact details</h4>
+                            <ul>
+                                <li>Email twatkins@ex.net</li>
+                                <li>Mobile +19095151234</li>
+                                <li>Address 1234 Somwhere Dr</li>
+                            </ul>
+                            <ul>
+                                <li>
+                                    <button
+                                        type="button"
+                                        id="video-call"
+                                        name="video-call"
+                                    >
+                                        <i class="fa-solid fa-video"></i
+                                        >&nbsp;Video call Tasha
+                                    </button>
+                                </li>
+                                <li>
+                                    <button
+                                        type="button"
+                                        id="remove-contact"
+                                        name="remove"
+                                    >
+                                        Remove contact
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="right-content">
-                       <span>Keisha James</span>
-                       <p>Designer</p>
+                    <div class="contact-form">
+                        <header>
+                            <span>
+                                <img
+                                    src="{{ url_for('static', filename='images/user-pen-solid.svg') }}"
+                                    alt=""
+                                />
+                            </span>
+                        </header>
+                        <form method="POST">
+                            <h4>Add contact</h4>
+                            <input type="text" name="name" placeholder="Name" />
+                            <input
+                                type="email"
+                                name="email"
+                                placeholder="E-mail"
+                            />
+                            <input
+                                type="text"
+                                name="company"
+                                placeholder="Company"
+                            />
+                            <input
+                                type="text"
+                                name="title"
+                                placeholder="Title"
+                            />
+                            <input
+                                type="tel"
+                                name="mobile"
+                                placeholder="Mobile"
+                            />
+                            <select name="tags" id="tag-menu">
+                                <option value="" selected>Add tag</option>
+                                <option value="red">red</option>
+                                <option value="blue">blue</option>
+                                <option value="teal">teal</option>
+                                <option value="purple">purple</option>
+                                <option value="yellow">yellow</option>
+                                <option value="orange">orange</option>
+                                <option value="silver">silver</option>
+                                <option value="green">green</option>
+                                <option value="turquoise">turquoise</option>
+                            </select>
+                            <textarea name="note" placeholder="Note"></textarea>
+                            <input
+                                type="submit"
+                                name="submit"
+                                value="Add contact"
+                            />
+                        </form>
                     </div>
                 </div>
-                <div class="contact">
-                    <div class="left-content">
-                       <span class="tag"></span>
-                       <span class="status"><img src="{{ url_for('static', filename='images/image5.png') }}" alt=""></span>
-                    </div>
-                    <div class="right-content">
-                        <span>Devon Anderson</span>
-                        <p>Digital Marketer</p>
-                    </div>
-                </div>
-                <div class="contact">
-                    <div class="left-content">
-                        <span class="tag"></span>
-                        <span class="status"><img src="{{ url_for('static', filename='images/image7.png') }}" alt=""></span>
-                    </div>
-                    <div class="right-content">
-                        <span>Tasha Watkins</span>
-                        <p>Software Engineer</p>
-                    </div>
-                </div>
-                <div class="contact">
-                    <div class="left-content">
-                        <span class="tag"></span>
-                        <span class="status"><img src="{{ url_for('static', filename='images/image8.png') }}" alt=""></span>
-                    </div>
-                    <div class="right-content">
-                        <span>Amy Collins</span>
-                        <p>UI/UX Designer</p>
-                    </div>
-                </div>
-             </div>
-             <div class="main-content">
-                <div class="contact">
-                    <header>
-                      <div>
-                          <span class="edit-contact"><img src="{{ url_for('static', filename='images/user-pen-solid.svg') }}" alt=""></span>
-                          <span class="tag"></span>
-                          <span class="status"><img src="{{ url_for('static', filename='images/image7.png') }}" alt=""></span>
-                      </div>
-                       <ul>
-                         <li>Tasha Watkins</li>
-                         <li>Software Engineer</li>
-                         <li>@TechVision</li>
-                       </ul>
-                    </header>
-                    <div class="contact-details">
-                       <h4>Contact details</h4>
-                       <ul>
-                         <li>Email twatkins@ex.net</li>
-                         <li>Mobile +19095151234</li>
-                         <li>Address 1234 Somwhere Dr</li>
-                       </ul>
-                       <ul>
-                         <li><button type="button" id="video-call" name="video-call"><i class="fa-solid fa-video"></i>&nbsp;Video call Tasha</button></li>
-                         <li><button type="button" id="remove-contact" name="remove">Remove contact</button></li>
-                       </ul>
-                    </div>
-                </div>
-                <div class="contact-form">
-                   <header>
-                       <span>
-                           <img src="{{ url_for('static', filename='images/user-pen-solid.svg') }}" alt="">
-                       </span>
-                   </header>
-                   <form method="POST">
-                       <h4>Add contact</h4>
-                       <input type="text" name="name" placeholder="Name">
-                       <input type="email" name="email" placeholder="E-mail">
-                       <input type="text" name="company" placeholder="Company">
-                       <input type="text" name="title" placeholder="Title">
-                       <input type="tel" name="mobile" placeholder="Mobile">
-                       <select name="tags" id="tag-menu">
-                           <option value="" selected>Add tag</option>
-                           <option value="red">red</option>
-                           <option value="blue">blue</option>
-                           <option value="teal">teal</option>
-                           <option value="purple">purple</option>
-                           <option value="yellow">yellow</option>
-                           <option value="orange">orange</option>
-                           <option value="silver">silver</option>
-                           <option value="green">green</option>
-                           <option value="turquoise">turquoise</option>
-                       </select>
-                       <textarea name="note" placeholder="Note"></textarea>
-                       <input type="submit" name="submit" value="Add contact">
-                   </form>
-                </div>
-             </div>
-         </main>
-      </div>
-  </div>
+            </main>
+        </div>
+    </div>
 </div>
 {% endblock %}

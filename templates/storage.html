@@ -1,85 +1,66 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <div class="container">
-  <div class="row-container">
-     {% include 'partials/menu.html' %}
-      <div class="message-container">
-         {% include 'partials/filter.html' %}
-         <main>
-             <div class="main-sidebar">
-                <header>
-                   <h4>Storage</h4>
-                   <p><img src="{{ url_for('static', filename='images/hard-drive-solid.svg') }}" alt=""><span>2GB</span> USED 1GB</p>
-                   <div class="disk-usage-bar">
-                      <div class="document-usage-bar"></div>
-                      <div class="image-usage-bar"></div>
-                      <div class="audio-usage-bar"></div>
-                   </div>
-                   <ul>
-                     <li>85% photos</li>
-                     <li>1,234 photos</li>
-                   </ul>
-                   <ul>
-                     <li>15% music</li>
-                     <li>1,234 songs</li>
-                   </ul>
-                </header>
-             </div>
-             <div class="main-content">
-                <div class="documents">
-                    <header class="document-header">
-                        <h4>All documents</h4>
-                        <select name="document-filter">
-                            <option value="documents">Documents</option>
-                            <option value="audio">Audio</option>
-                            <option value="image">Image</option>
-                        </select>
-                    </header>
-                    <div class="content-card">
-                        <header>
-                            <ul>
-                              <li>FILENAME</li>
-                              <li>TYPE</li>
-                              <li>DATE ADDED</li>
-                            </ul>
+    <div class="row-container">
+        {% include 'partials/menu.html' %}
+        <div class="message-container">
+            {% include 'partials/filter.html' %}
+            <main>
+                {% include 'partials/sidebar.html' %}
+                <div class="main-content">
+                    <div class="documents">
+                        <header class="document-header">
+                            <h4>All documents</h4>
+                            <select name="document-filter">
+                                <option value="documents">Documents</option>
+                                <option value="audio">Audio</option>
+                                <option value="image">Image</option>
+                            </select>
                         </header>
-                        <div class="content">
-                           <ul>
-                             <li>Phoenix-1901.mp3</li>
-                             <li>Audio</li>
-                             <li>An hour ago</li>
-                             <li class="kebab-menu">&vellip;</li>
-                           </ul>
-                           <ul>
-                             <li>Coldplay-Violet_Hill.mp3</li>
-                             <li>Audio</li>
-                             <li>2 days ago</li>
-                             <li class="kebab-menu">&vellip;</li>
-                           </ul>
-                           <ul>
-                             <li>img001.png</li>
-                             <li>Image</li>
-                             <li>6 hours ago</li>
-                             <li class="kebab-menu">&vellip;</li>
-                           </ul>
-                           <ul>
-                             <li>img002.jpg</li>
-                             <li>Image</li>
-                             <li>12 hours ago</li>
-                             <li class="kebab-menu">&vellip;</li>
-                           </ul>
-                           <ul>
-                             <li>resume.doc</li>
-                             <li>Document</li>
-                             <li>2 weeks ago</li>
-                             <li class="kebab-menu">&vellip;</li>
-                           </ul>
+                        <div class="content-card">
+                            <header>
+                                <ul>
+                                    <li>FILENAME</li>
+                                    <li>TYPE</li>
+                                    <li>DATE ADDED</li>
+                                </ul>
+                            </header>
+                            <div class="content">
+                                <ul>
+                                    <li>Phoenix-1901.mp3</li>
+                                    <li>Audio</li>
+                                    <li>An hour ago</li>
+                                    <li class="kebab-menu">&vellip;</li>
+                                </ul>
+                                <ul>
+                                    <li>Coldplay-Violet_Hill.mp3</li>
+                                    <li>Audio</li>
+                                    <li>2 days ago</li>
+                                    <li class="kebab-menu">&vellip;</li>
+                                </ul>
+                                <ul>
+                                    <li>img001.png</li>
+                                    <li>Image</li>
+                                    <li>6 hours ago</li>
+                                    <li class="kebab-menu">&vellip;</li>
+                                </ul>
+                                <ul>
+                                    <li>img002.jpg</li>
+                                    <li>Image</li>
+                                    <li>12 hours ago</li>
+                                    <li class="kebab-menu">&vellip;</li>
+                                </ul>
+                                <ul>
+                                    <li>resume.doc</li>
+                                    <li>Document</li>
+                                    <li>2 weeks ago</li>
+                                    <li class="kebab-menu">&vellip;</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-             </div>
-         </main>
-      </div>
-  </div>
+            </main>
+        </div>
+    </div>
 </div>
 {% endblock %}
