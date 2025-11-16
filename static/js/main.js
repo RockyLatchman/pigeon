@@ -2,17 +2,12 @@ function toggleSearchField() {
   const searchButton = document.querySelector(".search-button");
   searchButton.addEventListener("click", (e) => {
     const searchField = document.querySelector("#search");
-    const computedBorderStyle = window.getComputedStyle(searchField);
-    const borderBottomWidth = computedBorderStyle.getPropertyValue(
-      "border-bottom-width",
-    );
-    const borderBottomStyle = computedBorderStyle.getPropertyValue(
-      "border-bottom-style",
-    );
-    if (borderBottomStyle == "none" && parseInt(borderBottomWidth) < 1) {
+    const computedSearch = window.getComputedStyle(searchField);
+    if (computedSearch.display == "none") {
+      document.querySelector("#search").style.display = "block";
       document.querySelector("#search").style.borderBottom = "1px solid #ccc";
     } else {
-      document.querySelector("#search").style.borderBottom = "none";
+      document.querySelector("#search").style.display = "none";
     }
   });
 }
