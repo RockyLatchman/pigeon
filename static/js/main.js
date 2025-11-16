@@ -32,7 +32,12 @@ function loadPanel() {
   /* load side panel with the appropriate form (video, storage item)*/
 }
 
-function loadOverlayWindow() {}
+function loadOverlayWindow() {
+  //create and append overlay to the DOM
+  const overlayDiv = document.createElement("div");
+  overlayDiv.setAttribute("id", "overlay");
+  document.querySelector("body").appendChild(overlayDiv);
+}
 
 function startVideoCall() {}
 
