@@ -49,6 +49,10 @@ menu li i {
     border-right: 1px solid #ccc;
 }
 
+.search-button {
+    cursor: pointer;
+}
+
 /*
 
 .tk-fatfrank { font-family: "fatfrank",sans-serif; }

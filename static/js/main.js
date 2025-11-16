@@ -1,6 +1,25 @@
+function toggleSearchField() {
+  const searchButton = document.querySelector(".search-button");
+  searchButton.addEventListener("click", (e) => {
+    const searchField = document.querySelector("#search");
+    const computedBorderStyle = window.getComputedStyle(searchField);
+    const borderBottomWidth = computedBorderStyle.getPropertyValue(
+      "border-bottom-width",
+    );
+    const borderBottomStyle = computedBorderStyle.getPropertyValue(
+      "border-bottom-style",
+    );
+    if (borderBottomStyle == "none" && parseInt(borderBottomWidth) < 1) {
+      document.querySelector("#search").style.borderBottom = "1px solid #ccc";
+    } else {
+      document.querySelector("#search").style.borderBottom = "none";
+    }
+  });
+}
+
 function getCurrentDate() {
-  const date = new Date()
-  const day = date.getDate()
+  const date = new Date();
+  const day = date.getDate();
   return day;
 }
 
@@ -10,7 +29,6 @@ const editContactForm = ``;
 const videoContentWindow = ``;
 const storageMenu = ``;
 
-
 function switchForm() {
   /* load Edit contact form  */
 }
@@ -19,50 +37,39 @@ function loadPanel() {
   /* load side panel with the appropriate form (video, storage item)*/
 }
 
-function loadOverlayWindow() {
-}
+function loadOverlayWindow() {}
 
-function startVideoCall() {
+function startVideoCall() {}
 
-}
+function endVideoCall() {}
 
-function endVideoCall() {
-
-}
-
-function removePanel() {
-
-}
+function removePanel() {}
 
 function highlightSearchField() {
   //add border bottom on magnify button click
 }
 
-function addCalendarEvent() {
+function addCalendarEvent() {}
 
-}
-
-function opendialogMenu() {
-
-}
-
+function opendialogMenu() {}
 
 function highlightDate() {
   /*get the dates from the cells, iterate over them
     and find the cell that has the current date and
     highlight it
   */
-  const cells = document.querySelectorAll('td');
+  const cells = document.querySelectorAll("td");
   const day = getCurrentDate();
-  cells.forEach(function(cell) {
-    if(cell.innerHTML == day){
-        cell.innerHTML = '';
-        const spanTag = document.createElement('span');
-        spanTag.setAttribute('id', 'selectedItem');
-        spanTag.innerHTML = day
-        cell.appendChild(spanTag);
+  cells.forEach(function (cell) {
+    if (cell.innerHTML == day) {
+      cell.innerHTML = "";
+      const spanTag = document.createElement("span");
+      spanTag.setAttribute("id", "selectedItem");
+      spanTag.innerHTML = day;
+      cell.appendChild(spanTag);
     }
-  })
+  });
 }
 
+toggleSearchField();
 highlightDate();
