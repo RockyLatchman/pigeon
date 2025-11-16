@@ -878,6 +878,84 @@ main .main-sidebar.calendar header p {
     color: var(--dark-gray);
 }
 
+.calendar-event {
+    background: #fafafa;
+    width: 35%;
+    height: 100vh;
+    padding-bottom: 50px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.calendar-event form {
+    display: block;
+    width: 85%;
+    margin: 75px auto 0 auto;
+}
+
+.calendar-event span {
+    display: block;
+    width: 15%;
+    float: right;
+    margin: 10px auto 0 0;
+}
+
+.calendar-event span a {
+    font:
+        normal 700 1em "dejanire-sans",
+        sans-serif;
+    color: #201f1f;
+    text-decoration: none;
+}
+
+.calendar-event h3 {
+    font:
+        normal 700 2em "dejanire-sans",
+        sans-serif;
+    color: #201f1f;
+    margin-bottom: 10px;
+}
+
+.calendar-event input::placeholder,
+.calendar-event input::moz-placeholder,
+.calendar-event input:-ms-input-placeholder,
+.calendar-event input::-webkit-input-placeholder {
+    padding-left: 5px !important;
+}
+
+.calendar-event input:not(input[type="submit"]) {
+    width: 100%;
+    height: 40px;
+    margin-bottom: 10px;
+    border: 1px solid #cccc;
+    outline: transparent;
+}
+
+.calendar-event label {
+    display: inline-block;
+    width: 100%;
+    font:
+        normal 100 0.9em "dejanire-sans",
+        sans-serif;
+    margin-bottom: 5px;
+}
+
+.calendar-event input[type="submit"] {
+    display: block;
+    background: #de067a;
+    color: #fafafa;
+    border: none;
+    border-radius: 10px;
+    width: 175px;
+    height: 50px;
+    font:
+        normal 700 0.8em "dejanire-sans",
+        sans-serif;
+    cursor: pointer;
+    margin: 10px 0 0 auto;
+}
+
 /* Storage */
 
 main .main-sidebar header .disk-usage-bar {
@@ -1185,3 +1263,5 @@ main .main-sidebar header ul li:nth-child(even) {
     cursor: pointer;
     margin-right: auto;
 }
+
+/* */

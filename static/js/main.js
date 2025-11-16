@@ -18,7 +18,22 @@ function getCurrentDate() {
   return day;
 }
 
-const calendarEvent = ``;
+const calendarEvent = `
+       <div class="calendar-event">
+          <span><a href="">[X] CLOSE</a></span>
+          <form method="POST">
+              <h3>Add calendar event</h3>
+              <input type="text" name="eventname" placeholder="Event name">
+              <input type="text" name="category" placeholder="Category">
+              <label for="eventdate">Event date</label>
+              <input type="date" name="eventdate">
+              <label for="eventtime">Event time</label>
+              <input type="time" name="eventtime">
+              <input type="submit" name="add-calendar-event" value="Save">
+           </form>
+       </div>
+ `;
+
 const sidePanel = ``;
 const editContactForm = ``;
 const videoContentWindow = ``;
@@ -36,7 +51,13 @@ function loadOverlayWindow() {
   //create and append overlay to the DOM
   const overlayDiv = document.createElement("div");
   overlayDiv.setAttribute("id", "overlay");
-  document.querySelector("body").appendChild(overlayDiv);
+  return overlayDiv;
+}
+
+function loadTemplate(htmlContent) {
+  const template = document.createElement("template");
+  template.innerHTML = htmlContent;
+  return template.content;
 }
 
 function startVideoCall() {}
@@ -49,7 +70,15 @@ function highlightSearchField() {
   //add border bottom on magnify button click
 }
 
-function addCalendarEvent() {}
+function addCalendarEvent() {
+  const addEventButton = document.querySelector("#add-event");
+  addEventButton.addEventListener("click", (e) => {
+    const overlay = loadOverlayWindow();
+    const calendar = loadTemplate(calendarEvent);
+    overlay.appendChild(calendar);
+    document.querySelector("body").appendChild(overlay);
+  });
+}
 
 function opendialogMenu() {}
 
@@ -71,5 +100,6 @@ function highlightDate() {
   });
 }
 
+addCalendarEvent();
 toggleSearchField();
 highlightDate();
