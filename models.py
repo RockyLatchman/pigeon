@@ -2,6 +2,7 @@ import uuid
 from datetime import datetime, timezone
 from typing import List, Optional
 
+from passlib.hash import pbkdf2_sha256
 from sqlmodel import Field, Relationship, Session, SQLModel, select
 
 
@@ -192,6 +193,10 @@ class Storage(SQLModel, table=True):
 class Security:
     def validate_email():
         pass
+
+    @classmethod
+    def hash_password(cls, password):
+        return pbkdf2_sha256.hash(password)
 
     def _check_password_length():
         pass

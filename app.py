@@ -28,7 +28,7 @@ def register():
         user = User(
             fullname=request.form.get("name"),
             email=request.form.get("email"),
-            password=request.form.get("password"),
+            password=Security.hash_password(request.form.get("password")),
         )
         user.register(db_engine)
     return render_template("register.html")
