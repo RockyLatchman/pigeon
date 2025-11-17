@@ -198,8 +198,10 @@ class Security:
     def hash_password(cls, password):
         return pbkdf2_sha256.hash(password)
 
-    def _check_password_length():
-        pass
+    def _check_password_length(password):
+        if len(password) < 8:
+            return "Password is too short"
+        return password
 
     def validate_password():
         pass
