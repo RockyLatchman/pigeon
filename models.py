@@ -206,6 +206,10 @@ class Security:
                     return "Invalid name"
         return fullname
 
+    def whitespace_formatter(self, field):
+        """Ensure that there is only one space character"""
+        pass
+
     def validate_email(self, user_email):
         try:
             email = validate_email(user_email, check_deliverability=False)
@@ -213,16 +217,18 @@ class Security:
         except EmailNotValidError as e:
             return f"Invalid email: {e}"
 
-    def hash_password(self, password):
+    def _hash_password(self, password):
         return pbkdf2_sha256.hash(password)
 
-    def _check_password_length(password):
+    def _check_password_length(self, password):
         if len(password) < 8:
-            return "Password is too short"
-        return password
+            return "Password is too short", 401
+        security = Security()
+        return security._hash_password(password)
 
-    def validate_password():
-        pass
+    def validate_password(self, password):
+        security = Security()
+        return security._check_password_length(password)
 
     def validate_fields(fields):
         pass
