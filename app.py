@@ -5,7 +5,7 @@ import os
 from dotenv import load_dotenv
 from flask import Flask, render_template, request, session
 from flask_wtf import CSRFProtect
-from models import Account, Contact, Event, Message, Storage
+from models import Contact, Event, Message, Profile, Security, Storage, User
 from sqlmodel import Session, create_engine
 
 load_dotenv(".env")
@@ -24,6 +24,13 @@ def index():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    if request.method == "POST":
+        user = User(
+            fullname=request.form.get("name"),
+            email=request.form.get("email"),
+            password=request.form.get("password"),
+        )
+        user.register(db_engine)
     return render_template("register.html")
 
 

@@ -362,8 +362,8 @@ table tr td #selectedItem {
     color: #fafafa;
     padding: 5px 5px;
     display: inline-block;
-    width: 10px;
-    height: 10px;
+    width: 15px;
+    height: 15px;
     border-radius: 50%;
     text-align: center;
     font-weight: 600;
@@ -891,7 +891,7 @@ main .main-sidebar.calendar header p {
 .calendar-event form {
     display: block;
     width: 85%;
-    margin: 75px auto 0 auto;
+    margin: 120px auto 0 auto;
 }
 
 .calendar-event span {
@@ -914,7 +914,7 @@ main .main-sidebar.calendar header p {
         normal 700 2em "dejanire-sans",
         sans-serif;
     color: #201f1f;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .calendar-event input::placeholder,

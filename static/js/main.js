@@ -100,6 +100,9 @@ function highlightDate() {
   });
 }
 
-addCalendarEvent();
+if (window.location.pathname == "/calendar") {
+  addCalendarEvent();
+}
+
 toggleSearchField();
 highlightDate();
