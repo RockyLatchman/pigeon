@@ -3,7 +3,7 @@ import datetime
 import os
 
 from dotenv import load_dotenv
-from flask import Flask, render_template, request, session
+from flask import Flask, flash, render_template, request, session
 from flask_wtf import CSRFProtect
 from models import Contact, Event, Message, Profile, Security, Storage, User
 from sqlmodel import Session, create_engine
@@ -25,11 +25,11 @@ def index():
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
-        user = User(
-            fullname=request.form.get("name"),
-            email=request.form.get("email"),
-            password=Security.hash_password(request.form.get("password")),
-        )
+        security = Security()
+        fullname = security.validate_name(request.form.get("name"))
+        email = security.validate_email(request.form.get("email"))
+        password = security.hash_password(request.form.get("password"))
+        user = User(fullname=fullname, email=email, password=password)
         user.register(db_engine)
     return render_template("register.html")
 

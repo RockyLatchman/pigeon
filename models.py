@@ -197,6 +197,14 @@ class Security:
         self.attempts = 0
         self.ip_addresses = []
         self.blacklisted = []
+        self.special_characters = "1234567890~</>(-)+='&^%$#@\,?!*|[{]}:;"
+
+    def validate_name(self, fullname):
+        for special_character in self.special_characters:
+            for letter in fullname:
+                if letter == special_character:
+                    return "Invalid name"
+        return fullname
 
     def validate_email(self, user_email):
         try:
@@ -205,8 +213,7 @@ class Security:
         except EmailNotValidError as e:
             return f"Invalid email: {e}"
 
-    @classmethod
-    def hash_password(cls, password):
+    def hash_password(self, password):
         return pbkdf2_sha256.hash(password)
 
     def _check_password_length(password):
