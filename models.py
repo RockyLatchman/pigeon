@@ -2,6 +2,7 @@ import uuid
 from datetime import datetime, timezone
 from typing import List, Optional
 
+from flask import redirect, url_for
 from passlib.hash import pbkdf2_sha256
 from sqlmodel import Field, Relationship, Session, SQLModel, select
 
@@ -191,6 +192,11 @@ class Storage(SQLModel, table=True):
 
 
 class Security:
+    def __init__(self):
+        self.attempts = 0
+        self.ip_addresses = []
+        self.blacklisted = []
+
     def validate_email():
         pass
 
@@ -209,5 +215,30 @@ class Security:
     def validate_fields(fields):
         pass
 
-    def rate_limit(self, attempts):
+    def rate_limit(self, current_user_ip, current_page):
+        self.attempts += 1
+        if len(self.ip_addresses) == 0:
+            self.ip_addresses.append(current_user_ip)
+        else:
+            for ip_address in self.ip_addresses:
+                if current_user_ip != ip_address:
+                    self.ip_addresses.append(current_user_ip)
+                if current_user_ip == ip_address and self.attempts < 3:
+                    return redirect(url_for(current_page))
+                if self.attempts > 2:
+                    # log IP and blacklist it and require account verification
+                    print(self.attempts)
+                    Security._blacklist_ip(self, current_user_ip)
+                    return redirect(
+                        url_for(
+                            current_page,
+                            message="Too many attempts, you will need to verify your account click here",
+                        )
+                    )
+
+    def _blacklist_ip(self, ip):
+        self.blacklisted.append(ip)
+        # save to a database of blocked IP addresses
+
+    def verify_account():
         pass
