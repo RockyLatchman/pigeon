@@ -2,6 +2,7 @@ import uuid
 from datetime import datetime, timezone
 from typing import List, Optional
 
+from email_validator import EmailNotValidError, validate_email
 from flask import redirect, url_for
 from passlib.hash import pbkdf2_sha256
 from sqlmodel import Field, Relationship, Session, SQLModel, select
@@ -197,8 +198,12 @@ class Security:
         self.ip_addresses = []
         self.blacklisted = []
 
-    def validate_email():
-        pass
+    def validate_email(self, user_email):
+        try:
+            email = validate_email(user_email, check_deliverability=False)
+            return email.normalized
+        except EmailNotValidError as e:
+            return f"Invalid email: {e}"
 
     @classmethod
     def hash_password(cls, password):
@@ -227,7 +232,6 @@ class Security:
                     return redirect(url_for(current_page))
                 if self.attempts > 2:
                     # log IP and blacklist it and require account verification
-                    print(self.attempts)
                     Security._blacklist_ip(self, current_user_ip)
                     return redirect(
                         url_for(
