@@ -37,7 +37,17 @@ const calendarEvent = `
 const sidePanel = ``;
 const editContactForm = ``;
 const videoContentWindow = ``;
-const storageMenu = ``;
+const storageMenu = `
+    <div class="document-menu">
+       <menu>
+         <li>Open</li>
+         <li>Download</li>
+         <li>Rename</li>
+         <li>Get Info</li>
+         <li>Delete</li>
+       </menu>
+    </div>
+`;
 
 function switchForm() {
   /* load Edit contact form  */
@@ -80,7 +90,18 @@ function addCalendarEvent() {
   });
 }
 
-function opendialogMenu() {}
+function openContextMenu() {
+  const documentItem = document.querySelectorAll(".content ul");
+  documentItem.forEach((item) => {
+    item.addEventListener("click", (e) => {
+      const menuHTML = loadTemplate(storageMenu);
+      const menu = menuHTML.childNodes[1];
+      menu.style.left = e.clientX + "px";
+      menu.style.top = e.clientY + "px";
+      document.querySelector("body").appendChild(menu);
+    });
+  });
+}
 
 function highlightDate() {
   /*get the dates from the cells, iterate over them
@@ -106,3 +127,4 @@ if (window.location.pathname == "/calendar") {
 
 toggleSearchField();
 highlightDate();
+openContextMenu();

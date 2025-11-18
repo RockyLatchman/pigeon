@@ -1171,6 +1171,27 @@ main .main-sidebar header ul li:nth-child(even) {
     margin-bottom: 15px;
 }
 
+.document-menu {
+    border-radius: 15px;
+    background: #fff;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.3));
+    padding: 10px;
+}
+
+.document-menu menu li {
+    font:
+        normal 100 1em "dejanire-sans",
+        sans-serif;
+    color: #5a5a5a;
+    text-align: left;
+    margin: 5px 0 0 10px;
+    list-style-type: none;
+    cursor: pointer;
+}
+
 /* settings */
 
 .settings {
