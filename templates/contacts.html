@@ -69,6 +69,11 @@
                         </header>
                         <form method="POST">
                             <h4>Add contact</h4>
+                            <input
+                                type="hidden"
+                                name="csrf_token"
+                                value="{{ csrf_token() }}"
+                            />
                             <input type="text" name="name" placeholder="Name" />
                             <input
                                 type="email"
@@ -92,15 +97,15 @@
                             />
                             <select name="tag" id="tag-menu">
                                 <option value="" selected>Add tag</option>
-                                <option value="red">red</option>
-                                <option value="blue">blue</option>
-                                <option value="teal">teal</option>
-                                <option value="purple">purple</option>
-                                <option value="yellow">yellow</option>
-                                <option value="orange">orange</option>
-                                <option value="silver">silver</option>
-                                <option value="green">green</option>
-                                <option value="turquoise">turquoise</option>
+                                <option value="#ff0000">red</option>
+                                <option value="#00ff00">blue</option>
+                                <option value="#069494">teal</option>
+                                <option value="#800080">purple</option>
+                                <option value="#FFEF00">yellow</option>
+                                <option value="#FF7518">orange</option>
+                                <option value="#D3D3D3">silver</option>
+                                <option value="#0BDA51">green</option>
+                                <option value="#00FFEF">turquoise</option>
                             </select>
                             <textarea name="note" placeholder="Note"></textarea>
                             <input

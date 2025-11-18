@@ -64,6 +64,13 @@ class Contact(SQLModel, table=True):
     user_id: int = Field(foreign_key="users.user_id", nullable=False)
     date_added: datetime = Field(default_factory=datetime.utcnow)
     status: str = Field(default="active")  # active, muted or blocked
+    fullname: str
+    email: str = Field(unique=True)
+    company: str
+    title: str
+    mobile: str
+    note: str
+    tag: str = Field(index=True)
     user_contacts: User = Relationship(back_populates="contact_list")
 
     def add_contact(self, db_engine):
@@ -236,9 +243,14 @@ class Security:
         security = Security()
         return security._check_password_length(password)
 
+    def reset_password(self):
+        pass
+
     def validate_mobile(self, mobile):
         if not mobile.isdigit() or len(mobile) > 15:
             return "Please provide no more than 15 characters, digits only", 422
+        else:
+            return mobile
 
     def validate_fields(fields):
         pass

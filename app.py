@@ -49,8 +49,29 @@ def send_message():
     pass
 
 
-@app.route("/contacts")
+@app.route("/contacts", methods=["GET", "POST"])
 def contacts():
+    if request.method == "POST":
+        security = Security()
+        name = security.validate_name(request.form.get("name"))
+        email = security.validate_email(request.form.get("email"))
+        company = request.form.get("company")
+        title = security.validate_name(request.form.get("title"))
+        mobile = security.validate_mobile(request.form.get("mobile"))
+        tag = request.form.get("tag")
+        note = request.form.get("note")
+        user_id = 2
+        contact = Contact(
+            fullname=name,
+            email=email,
+            company=company,
+            title=title,
+            mobile=mobile,
+            tag=tag,
+            note=note,
+            user_id=user_id,
+        )
+        contact.add_contact(db_engine)
     return render_template("contacts.html")
 
 
