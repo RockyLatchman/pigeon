@@ -27,7 +27,7 @@ class User(SQLModel, table=True):
                 session.refresh(self)
             except Exception as e:
                 session.rollback()
-                print(f"Error creating a {e}")
+                return f"Unable to save: {e}", 422
 
 
 class Profile(SQLModel, table=True):
@@ -66,8 +66,14 @@ class Contact(SQLModel, table=True):
     status: str = Field(default="active")  # active, muted or blocked
     user_contacts: User = Relationship(back_populates="contact_list")
 
-    def add_contact():
-        pass
+    def add_contact(self, db_engine):
+        try:
+            with Session(db_engine) as session:
+                session.add(self)
+                session.commit()
+                session.rollback(self)
+        except Exception as e:
+            return f"Unable to save: {e}", 422
 
     def block_contact():
         pass
@@ -197,7 +203,7 @@ class Security:
         self.attempts = 0
         self.ip_addresses = []
         self.blacklisted = []
-        self.special_characters = "1234567890~</>(-)+='&^%$#@\,?!*|[{]}:;"
+        self.special_characters = r"1234567890~</>(-)+=\\'&^%$#@,?!*|[{]}:;"
 
     def validate_name(self, fullname):
         for special_character in self.special_characters:
@@ -229,6 +235,10 @@ class Security:
     def validate_password(self, password):
         security = Security()
         return security._check_password_length(password)
+
+    def validate_mobile(self, mobile):
+        if not mobile.isdigit() or len(mobile) > 15:
+            return "Please provide no more than 15 characters, digits only", 422
 
     def validate_fields(fields):
         pass
