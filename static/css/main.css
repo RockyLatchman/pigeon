@@ -1182,14 +1182,18 @@ main .main-sidebar header ul li:nth-child(even) {
 }
 
 .document-menu menu li {
-    font:
-        normal 100 1em "dejanire-sans",
-        sans-serif;
-    color: #5a5a5a;
     text-align: left;
     margin: 5px 0 0 10px;
     list-style-type: none;
     cursor: pointer;
+}
+
+.document-menu menu li a {
+    font:
+        normal 100 1em "dejanire-sans",
+        sans-serif;
+    color: #5a5a5a;
+    text-decoration: none;
 }
 
 /* settings */
