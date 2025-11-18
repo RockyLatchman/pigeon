@@ -34,7 +34,7 @@ menu li i {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    width: 100%;
+    max-width: 100%;
     height: auto;
 }
 
@@ -122,16 +122,19 @@ menu li i {
 /* messages */
 
 .message-container {
-    width: 80.5%;
+    width: 82%;
     margin-left: auto;
     height: auto;
 }
 
 .message-container header:first-of-type {
+    position: relative;
+    left: 0;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    width: 100%;
     height: 75px;
     border-bottom: 1px solid rgba(212, 212, 212, 0.5);
 }
@@ -205,14 +208,13 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    width: auto;
+    max-width: 100%;
 }
 
 main .main-sidebar {
     width: 25%;
     height: 100vh;
     border-right: 1px solid rgba(212, 212, 212, 0.5);
-    /*border: 1px solid rgba(212,212,212,0.5);*/
 }
 
 main .main-sidebar header {
@@ -243,7 +245,6 @@ main .main-sidebar header p {
 main .schedule {
     justify-content: space-around;
     width: 100%;
-    padding-top: 10px;
 }
 
 main .schedule h4 {
@@ -252,14 +253,14 @@ main .schedule h4 {
         sans-serif;
     color: var(--dark-gray);
     margin-bottom: 10px;
-    padding: 5px 8px;
+    padding: 5px 12px;
     border-bottom: 1px solid rgba(212, 212, 212, 0.5);
 }
 
 main .schedule ul {
     border-bottom: 1px solid rgba(212, 212, 212, 0.5);
     margin: 15px 0;
-    padding: 0 8px;
+    padding: 0 15px;
 }
 
 main .schedule ul li {
@@ -384,7 +385,7 @@ table .month {
 
 .sort-filter {
     display: inline-block;
-    width: 97%;
+    width: 98%;
     padding: 5px;
     background: #f0f0f0;
 }
@@ -392,15 +393,16 @@ table .month {
 .sort-filter select {
     width: 35%;
     height: 20px;
-    border: none;
     background: none;
     font:
         normal 800 0.8em "dejanire-sans",
         sans-serif;
     padding: 2px auto;
+    margin-left: 25px;
     line-height: 0.7em;
     color: var(--dark-gray);
     appearance: none;
+    border: none;
 }
 
 .sort-filter span {
@@ -582,10 +584,12 @@ table .month {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 100%;
+    width: 90%;
     position: relative;
     top: -40px;
+    left: 25px;
     align-items: center;
+    padding: 0 10px;
 }
 
 .main-sidebar .contact:hover {
@@ -608,12 +612,13 @@ table .month {
     margin-bottom: 10px;
     padding: 5px 8px;
     margin-right: auto !important;
-    margin-left: 10px;
+    margin-left: 75px;
 }
 
 .main-sidebar header span {
-    width: 100%;
+    width: 70%;
     height: 48px;
+    margin-left: auto;
 }
 
 .main-sidebar header img {
@@ -661,8 +666,10 @@ table .month {
 }
 
 .main-content .contact {
+    position: relative;
+    left: -25px;
     width: 65%;
-    border: 1px solid rgba(212, 212, 212, 0.4);
+    border-right: 1px solid rgba(212, 212, 212, 0.4);
 }
 
 .main-content .contact-form header {
@@ -711,13 +718,27 @@ table .month {
     border: 1px solid #ccc;
     margin-bottom: 15px;
     outline: transparent;
+    font:
+        normal 100 0.9em "dejanire-sans",
+        sans-serif;
+}
+
+.contact-form #tag-menu {
+    width: 100%;
+    height: 45px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+    padding-left: 3px;
+    outline: transparent;
+    font:
+        normal 100 0.9em "dejanire-sans",
+        sans-serif;
 }
 
 .contact-form form input::placeholder {
     font:
         normal 100 1em "dejanire-sans",
         sans-serif;
-    padding-left: 5px;
 }
 
 .contact-form form textarea::placeholder {
@@ -732,7 +753,11 @@ table .month {
     width: 100%;
     height: 120px;
     margin-bottom: 15px;
+    padding-left: 2px;
     outline: transparent;
+    font:
+        normal 100 0.9em "dejanire-sans",
+        sans-serif;
 }
 
 .contact-form form input[type="submit"] {
@@ -761,15 +786,17 @@ table .month {
 .main-content .contact header .edit-contact {
     display: block;
     position: relative;
-    left: 185px;
-    width: 15%;
+    left: 225px;
+    width: 50px;
+    height: 50px;
 }
 
 .main-content .contact header .edit-contact img {
+    display: block;
     width: 30px;
     height: 30px;
     cursor: pointer;
-    margin: 2px 5px 0 0;
+    margin: 8px 5px 0 0;
 }
 
 .main-content .contact header .status img {
@@ -797,8 +824,8 @@ table .month {
 }
 
 .main-content .contact .contact-details {
-    margin: 110px auto 0 auto;
-    width: 100%;
+    margin: 120px 0 auto 25px;
+    width: 95%;
 }
 
 .main-content .contact .contact-details h4 {
@@ -843,9 +870,9 @@ table .month {
     color: #fafafa;
     border: none;
     border-radius: 10px;
-    width: 130px;
-    height: 40px;
-    margin: 10px 0 0 5px;
+    width: 175px;
+    height: 50px;
+    margin: 10px 0 0 53px;
     font:
         normal 700 0.8em "dejanire-sans",
         sans-serif;
@@ -857,8 +884,8 @@ table .month {
     color: #fafafa;
     border: none;
     border-radius: 10px;
-    width: 130px;
-    height: 40px;
+    width: 175px;
+    height: 50px;
     margin: 10px 0 0 5px;
     font:
         normal 700 0.8em "dejanire-sans",
@@ -969,11 +996,15 @@ main .main-sidebar header .disk-usage-bar {
     margin: 15px auto 0 auto;
 }
 
+.main-sidebar.storage header h4 {
+    margin-top: 15px;
+}
+
 main .main-sidebar header p img {
     width: 21px;
     height: 21px;
     float: left;
-    margin: 0 auto 0 15px;
+    margin: 0 auto 0 70px;
 }
 
 main .main-sidebar header p {
@@ -1012,6 +1043,10 @@ main .disk-usage-bar .audio-usage-bar {
     background: #ccc;
 }
 
+main .main-sidebar header ul:first-of-type {
+    margin-top: 50px;
+}
+
 main .main-sidebar header ul {
     margin-top: 25px;
     width: 100%;
@@ -1044,7 +1079,7 @@ main .main-sidebar header ul li:nth-child(even) {
 .main-content .documents .document-header {
     width: 85%;
     height: 50px;
-    margin: 25px auto 0 auto;
+    margin: 75px auto 0 auto;
     border: none;
 }
 
@@ -1069,8 +1104,9 @@ main .main-sidebar header ul li:nth-child(even) {
     font:
         normal 100 0.9em "dejanire-sans",
         sans-serif;
-    width: 120px;
-    height: 25px;
+    width: 175px;
+    height: 30px;
+    padding-left: 5px;
 }
 
 .main-content .content-card {
@@ -1138,7 +1174,7 @@ main .main-sidebar header ul li:nth-child(even) {
 /* settings */
 
 .settings {
-    margin: 0 auto !important;
+    margin: 75px auto 0 auto !important;
     width: 100%;
 }
 
@@ -1194,7 +1230,7 @@ main .main-sidebar header ul li:nth-child(even) {
 }
 
 .settings form textarea::placeholder {
-    padding: 5px 0 0 5px;
+    padding: 5px 0 0 15px;
 }
 
 .settings form input[type="text"] {
@@ -1204,6 +1240,15 @@ main .main-sidebar header ul li:nth-child(even) {
     border: 1px solid #ccc;
 }
 
+.settings form input[type="text"]:nth-child(4) {
+    width: 47.5% !important;
+    margin: 15px 20px 15px 0;
+}
+
+.settings form input[type="text"]:nth-child(5) {
+    width: 46.5% !important;
+}
+
 .settings form input[type="tel"] {
     width: 47.5%;
     height: 40px;
@@ -1211,13 +1256,13 @@ main .main-sidebar header ul li:nth-child(even) {
 }
 
 .settings form input[type="email"] {
-    width: 47.5%;
+    width: 47%;
     height: 40px;
     border: 1px solid #ccc;
 }
 
 .settings form select:first-of-type {
-    width: 47.5%;
+    width: 47%;
     height: 40px;
     margin: 15px 0 15px 15px;
     border: 1px solid #ccc;
@@ -1226,7 +1271,7 @@ main .main-sidebar header ul li:nth-child(even) {
 }
 
 .settings form select[name="state"] {
-    width: 47.5%;
+    width: 47%;
     height: 40px;
     margin: 15px 0 15px 0;
     border: 1px solid #ccc;
@@ -1235,7 +1280,7 @@ main .main-sidebar header ul li:nth-child(even) {
 }
 
 .settings form select[name="country"] {
-    width: 97.5%;
+    width: 96%;
     height: 40px;
     margin: 15px 0 15px 0;
     border: 1px solid #ccc;
@@ -1244,24 +1289,25 @@ main .main-sidebar header ul li:nth-child(even) {
 }
 
 .settings form textarea {
-    width: 97.5%;
+    width: 96%;
     height: 120px;
     margin: 15px 0;
     border: 1px solid #ccc;
 }
 
 .settings form input[type="submit"] {
+    display: block;
     background: #de067a;
     color: #fafafa;
     border: none;
     border-radius: 10px;
-    width: 130px;
-    height: 40px;
+    width: 175px;
+    height: 50px;
     font:
         normal 700 0.8em "dejanire-sans",
         sans-serif;
     cursor: pointer;
-    margin-right: auto;
+    margin: 0 50px 0 auto;
 }
 
 /* */
