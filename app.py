@@ -75,6 +75,16 @@ def contacts():
     return render_template("contacts.html")
 
 
+@app.route("/contacts/edit/<contact_id>")
+def edit_contact():
+    pass
+
+
+@app.route("/contacts/remove/<contact_id>")
+def remove_contact():
+    pass
+
+
 @app.route("/calendar")
 def pigeon_calendar():
     user_calendar = calendar.HTMLCalendar(firstweekday=0)

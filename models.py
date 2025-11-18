@@ -85,8 +85,15 @@ class Contact(SQLModel, table=True):
     def block_contact():
         pass
 
-    def remove_contact():
-        pass
+    def remove_contact(self, db_engine):
+        try:
+            with Session(db_engine) as session:
+                result = session.exec(
+                    select(Contact).where(Contact.contact_id == self.contact_id)
+                )
+                return result.one()
+        except Exception as e:
+            return f"Unable to delete: {e}", 204
 
     def edit_contact():
         pass
