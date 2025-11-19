@@ -99,8 +99,15 @@ class Contact(SQLModel, table=True):
     def edit_contact():
         pass
 
-    def contact_list():
-        pass
+    def contact_list(self, db_engine):
+        try:
+            with Session(db_engine) as session:
+                contacts = session.exec(
+                    select(Contact).where(Contact.user_id == self.user_id)
+                ).all()
+                return [contact for contact in contacts]
+        except Exception as e:
+            return f"Unable to get contacts:  {e}", 404
 
     def get_contact(self, db_engine):
         try:
