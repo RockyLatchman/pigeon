@@ -106,7 +106,12 @@ def calendar_event():
 
 @app.route("/calendar/add/event", methods=["GET", "POST"])
 def add_event():
-    pass
+    calendar_event = Event(
+        event_id=1,
+    )
+    calendar_event.cancel_event(db_engine)
+    print(calendar_event)
+    return {"status": 200}
 
 
 @app.route("/storage")

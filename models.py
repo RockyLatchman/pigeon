@@ -148,8 +148,16 @@ class Event(SQLModel, table=True):
         except Exception as e:
             return f"Unable to save event: {e}", 422
 
-    def cancel_event():
-        pass
+    def cancel_event(self, db_engine):
+        try:
+            with Session(db_engine) as session:
+                result = session.exec(
+                    select(Event).where(Event.event_id == self.event_id)
+                ).one()
+                session.delete(result)
+                session.commit()
+        except Exception as e:
+            return f"Unable to remove event: {e}", 404
 
     def edit_event():
         pass
