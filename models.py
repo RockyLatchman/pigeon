@@ -88,10 +88,11 @@ class Contact(SQLModel, table=True):
     def remove_contact(self, db_engine):
         try:
             with Session(db_engine) as session:
-                result = session.exec(
+                contact = session.exec(
                     select(Contact).where(Contact.contact_id == self.contact_id)
-                )
-                return result.one()
+                ).one_or_none()
+                session.delete(contact)
+                session.commit()
         except Exception as e:
             return f"Unable to delete: {e}", 204
 
@@ -101,8 +102,16 @@ class Contact(SQLModel, table=True):
     def contact_list():
         pass
 
-    def get_contact():
-        pass
+    def get_contact(self, db_engine):
+        try:
+            with Session(db_engine) as session:
+                statement = session.exec(
+                    select(Contact).where(Contact.contact_id == self.contact_id)
+                )
+                contact = statement.first().dict()
+                return contact
+        except Exception as e:
+            return f"Unable to find contact: {e}", 404
 
     def filter_contacts():
         pass

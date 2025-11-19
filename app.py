@@ -81,7 +81,7 @@ def edit_contact():
 
 
 @app.route("/contacts/remove/<contact_id>")
-def remove_contact():
+def remove_contact(contact_id):
     pass
 
 
