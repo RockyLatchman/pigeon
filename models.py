@@ -48,9 +48,6 @@ class Profile(SQLModel, table=True):
     def check_account_existence():
         pass
 
-    def validate_email():
-        pass
-
     def compare_passwords():
         pass
 
@@ -82,8 +79,18 @@ class Contact(SQLModel, table=True):
         except Exception as e:
             return f"Unable to save: {e}", 422
 
-    def block_contact():
-        pass
+    def block_contact(self, db_engine):
+        try:
+            with Session(db_engine) as session:
+                result = session.exec(
+                    select(Contact).where(Contact.contact_id == self.contact_id)
+                )
+                contact = result.one()
+                contact.status = self.status
+                session.add(contact)
+                session.commit()
+        except Exception as e:
+            return f"Unable to save: {e}", 422
 
     def remove_contact(self, db_engine):
         try:
