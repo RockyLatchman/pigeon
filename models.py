@@ -133,8 +133,15 @@ class Event(SQLModel, table=True):
     user_id: int = Field(foreign_key="users.user_id", nullable=False)
     user_event: User = Relationship(back_populates="user_events")
 
-    def retrieve_events():
-        pass
+    def retrieve_events(self, db_engine):
+        try:
+            with Session(db_engine) as session:
+                events = session.exec(
+                    select(Event).where(Event.user_id == self.user_id)
+                ).all()
+                return [event for event in events]
+        except Exception as e:
+            return f"Unable to retrieve events: {e}", 404
 
     def retrieve_event():
         pass
