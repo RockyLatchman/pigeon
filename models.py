@@ -79,7 +79,7 @@ class Contact(SQLModel, table=True):
         except Exception as e:
             return f"Unable to save: {e}", 422
 
-    def block_contact(self, db_engine):
+    def edit_contact(self, db_engine):
         try:
             with Session(db_engine) as session:
                 result = session.exec(
@@ -102,9 +102,6 @@ class Contact(SQLModel, table=True):
                 session.commit()
         except Exception as e:
             return f"Unable to delete: {e}", 204
-
-    def edit_contact():
-        pass
 
     def contact_list(self, db_engine):
         try:
