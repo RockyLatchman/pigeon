@@ -143,8 +143,16 @@ class Event(SQLModel, table=True):
         except Exception as e:
             return f"Unable to retrieve events: {e}", 404
 
-    def retrieve_event():
-        pass
+    def retrieve_event(self, db_engine):
+        try:
+            with Session(db_engine) as session:
+                result = session.exec(
+                    select(Event).where(Event.event_id == self.event_id)
+                )
+                event = result.first().dict()
+                return event
+        except Exception as e:
+            return f"Unable to retrieve event: {e}", 404
 
     def add_event(self, db_engine):
         try:
