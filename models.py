@@ -29,6 +29,12 @@ class User(SQLModel, table=True):
                 session.rollback()
                 return f"Unable to save: {e}", 422
 
+    def check_account_existence():
+        pass
+
+    def generate_session_id():
+        pass
+
 
 class Profile(SQLModel, table=True):
     __tablename__ = "profiles"
@@ -44,15 +50,6 @@ class Profile(SQLModel, table=True):
     user_id: int
     date_added: datetime = Field(default_factory=datetime.utcnow)
     last_active: datetime = Field(default_factory=datetime.utcnow)
-
-    def check_account_existence():
-        pass
-
-    def compare_passwords():
-        pass
-
-    def generate_session_id():
-        pass
 
 
 class Contact(SQLModel, table=True):
@@ -124,16 +121,13 @@ class Contact(SQLModel, table=True):
         except Exception as e:
             return f"Unable to find contact: {e}", 404
 
-    def filter_contacts():
-        pass
-
 
 class Event(SQLModel, table=True):
     __tablename__ = "events"
     event_id: int | None = Field(default=None, primary_key=True)
     event_name: str
     venue: str
-    event_datetime: datetime = Field(default_factory=datetime.utcnow)
+    event_datetime: datetime
     category: str  # work, social, family, vacation
     priority: str = Field(default="normal")  # normal or high
     user_id: int = Field(foreign_key="users.user_id", nullable=False)
@@ -145,8 +139,14 @@ class Event(SQLModel, table=True):
     def retrieve_event():
         pass
 
-    def add_event():
-        pass
+    def add_event(self, db_engine):
+        try:
+            with Session(db_engine) as session:
+                session.add(self)
+                session.commit()
+                session.rollback(self)
+        except Exception as e:
+            return f"Unable to save event: {e}", 422
 
     def cancel_event():
         pass
@@ -307,4 +307,7 @@ class Security:
         # save to a database of blocked IP addresses
 
     def verify_account():
+        pass
+
+    def compare_passwords():
         pass

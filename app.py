@@ -1,6 +1,7 @@
 import calendar
 import datetime
 import os
+from datetime import datetime
 
 from dotenv import load_dotenv
 from flask import Flask, flash, render_template, request, session
@@ -100,6 +101,11 @@ def pigeon_calendar():
 @app.route("/calendar/event", methods=["POST"])
 def calendar_event():
     # remove or add event to calendar
+    pass
+
+
+@app.route("/calendar/add/event", methods=["GET", "POST"])
+def add_event():
     pass
 
 
