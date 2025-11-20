@@ -89,7 +89,7 @@ def remove_contact(contact_id):
 @app.route("/calendar")
 def pigeon_calendar():
     user_calendar = calendar.HTMLCalendar(firstweekday=0)
-    current_date = datetime.datetime.today()
+    current_date = datetime.today()
     return render_template(
         "calendar.html",
         current_day=current_date.strftime("%A"),
@@ -106,12 +106,7 @@ def calendar_event():
 
 @app.route("/calendar/add/event", methods=["GET", "POST"])
 def add_event():
-    calendar_event = Event(
-        event_id=2, user_id=2, venue="1234 Somewhere Dr Neverland, Ca", priority="high"
-    )
-    event = calendar_event.edit_event(db_engine)
-    print(event)
-    return {"status": 200}
+    pass
 
 
 @app.route("/storage")

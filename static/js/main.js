@@ -9,6 +9,7 @@ const calendarEvent = `
               <input type="date" name="eventdate">
               <label for="eventtime">Event time</label>
               <input type="time" name="eventtime">
+              <textarea name="note" placeholder="Note(ex Contact steve to ask if he wants to come)"></textarea>
               <input type="submit" name="add-calendar-event" value="Save">
            </form>
        </div>

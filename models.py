@@ -137,6 +137,7 @@ class Event(SQLModel, table=True):
     event_datetime: datetime
     category: str  # work, social, family, vacation
     priority: str = Field(default="normal")  # normal or high
+    note: str
     user_id: int = Field(foreign_key="users.user_id", nullable=False)
     user_event: User = Relationship(back_populates="user_events")
 
@@ -195,10 +196,7 @@ class Event(SQLModel, table=True):
         except Exception as e:
             return f"Unable to update event: {e}", 422
 
-    def send_invite():
-        pass
-
-    def filter_events():
+    def send_notification(self):
         pass
 
 
