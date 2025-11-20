@@ -51,6 +51,12 @@ class Profile(SQLModel, table=True):
     date_added: datetime = Field(default_factory=datetime.utcnow)
     last_active: datetime = Field(default_factory=datetime.utcnow)
 
+    def create_profile(self):
+        pass
+
+    def update_profile(self):
+        pass
+
 
 class Contact(SQLModel, table=True):
     __tablename__ = "contacts"
@@ -79,13 +85,14 @@ class Contact(SQLModel, table=True):
     def edit_contact(self, db_engine):
         try:
             with Session(db_engine) as session:
-                result = session.exec(
-                    select(Contact).where(Contact.contact_id == self.contact_id)
-                )
-                contact = result.one()
-                contact.status = self.status
+                contact = session.get(Contact, self.contact_id)
+                for key, value in self.__dict__.items():
+                    if not key.startswith("_") and value is not None:
+                        setattr(contact, key, value)
                 session.add(contact)
                 session.commit()
+                session.refresh(contact)
+                return contact
         except Exception as e:
             return f"Unable to save: {e}", 422
 
@@ -174,8 +181,19 @@ class Event(SQLModel, table=True):
         except Exception as e:
             return f"Unable to remove event: {e}", 404
 
-    def edit_event():
-        pass
+    def edit_event(self, db_engine):
+        try:
+            with Session(db_engine) as session:
+                event = session.get(Event, self.event_id)
+                for key, value in self.__dict__.items():
+                    if not key.startswith("_") and value is not None:
+                        setattr(event, key, value)
+                session.add(event)
+                session.commit()
+                session.refresh(event)
+                return event
+        except Exception as e:
+            return f"Unable to update event: {e}", 422
 
     def send_invite():
         pass
