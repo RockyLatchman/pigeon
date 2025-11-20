@@ -983,6 +983,18 @@ main .main-sidebar.calendar header p {
     margin: 10px 0 0 auto;
 }
 
+.calendar-event textarea {
+    width: 100%;
+    height: 100px;
+    margin-top: 10px;
+    font:
+        normal 200 0.9em "dejanire-sans",
+        sans-serif;
+    color: #201f1f;
+    border: 1px solid #cccc;
+    outline: transparent;
+}
+
 /* Storage */
 
 main .main-sidebar header .disk-usage-bar {
