@@ -28,7 +28,7 @@ const composeForm = `
  `;
 const editContactForm = ``;
 const videoContentWindow = ``;
-const confirmationMenu = ``;
+
 const storageMenu = `
     <div class="document-menu">
        <menu>
@@ -123,49 +123,76 @@ function openContextMenu() {
       menu.style.top = e.clientY + "px";
       //item.parentNode.firstElementChild.innerHTML;
       document.querySelector("body").appendChild(menu);
-      selectedMenuItem(document.querySelector("#open"), item.parentNode);
-      selectedMenuItem(document.querySelector("#download"), item.parentNode);
-      selectedMenuItem(document.querySelector("#rename"), item.parentNode);
-      selectedMenuItem(document.querySelector("#get-info"), item.parentNode);
-      selectedMenuItem(document.querySelector("#delete"), item.parentNode);
+      selectedMenuItem(document.querySelector("#open"), item.parentNode, menu);
+      selectedMenuItem(
+        document.querySelector("#download"),
+        item.parentNode,
+        menu,
+      );
+      selectedMenuItem(
+        document.querySelector("#rename"),
+        item.parentNode,
+        menu,
+      );
+      selectedMenuItem(
+        document.querySelector("#get-info"),
+        item.parentNode,
+        menu,
+      );
+      selectedMenuItem(
+        document.querySelector("#delete"),
+        item.parentNode,
+        menu,
+      );
     });
   });
 }
 
-function selectedMenuItem(menuItem, item) {
+function selectedMenuItem(menuItem, item, menu) {
   switch (menuItem.id) {
     case "open":
       menuItem.addEventListener("click", (e) => {
         e.preventDefault();
+        document.querySelector("body").removeChild(menu);
         openItem(item);
       });
       break;
     case "download":
       menuItem.addEventListener("click", (e) => {
         e.preventDefault();
+        document.querySelector("body").removeChild(menu);
         downloadItem(item);
       });
       break;
     case "rename":
       menuItem.addEventListener("click", (e) => {
         e.preventDefault();
+        document.querySelector("body").removeChild(menu);
         renameItem(item);
       });
       break;
     case "get-info":
       menuItem.addEventListener("click", (e) => {
         e.preventDefault();
+        document.querySelector("body").removeChild(menu);
         getItemInfo(item);
       });
       break;
     case "delete":
       menuItem.addEventListener("click", (e) => {
         e.preventDefault();
+        document.querySelector("body").removeChild(menu);
         deleteItem(item);
       });
       break;
   }
 }
+
+// selectedMenuItem(document.querySelector(""));
+// selectedMenuItem(document.querySelector(""));
+// selectedMenuItem(document.querySelector(""));
+// selectedMenuItem(document.querySelector(""));
+// selectedMenuItem(document.querySelector(""));
 
 function openItem(item) {}
 
@@ -175,7 +202,19 @@ function renameItem(item) {}
 
 function getItemInfo(item) {}
 
-function deleteItem(item) {}
+function deleteItem(item) {
+  const confirmationResult = item.getAttribute("data-item");
+  const confirmationMenu = `
+     <div class="confirmation">
+       <p>Are you sure you want to delete this?</p>
+       <span><a href="/storage/delete/${confirmationResult}">OK</a></span>
+     </div>
+  `;
+  const overlay = loadOverlayWindow();
+  const confirmationTemplate = loadTemplate(confirmationMenu);
+  overlay.appendChild(confirmationTemplate);
+  document.querySelector("body").appendChild(overlay);
+}
 
 function highlightDate() {
   /*get the dates from the cells, iterate over them

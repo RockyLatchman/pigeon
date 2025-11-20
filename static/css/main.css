@@ -454,6 +454,36 @@ table .month {
     margin-right: 55px;
 }
 
+.confirmation {
+    background: #fff;
+    border-radius: 10px;
+    width: 325px;
+    height: 85px;
+    padding: 10px;
+    margin: 15% auto 0 auto;
+    text-align: center;
+}
+
+.confirmation p {
+    font:
+        normal 100 1em "dejanire-sans",
+        sans-serif;
+    color: #201f1f;
+    margin-top: 15px;
+}
+
+.confirmation span {
+    display: block;
+    margin-top: 5px;
+}
+
+.confirmation span a {
+    font:
+        normal 700 0.8em "dejanire-sans",
+        sans-serif;
+    color: #201f1f;
+}
+
 .sort-filter {
     display: inline-block;
     width: 98%;
