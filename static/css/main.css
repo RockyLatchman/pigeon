@@ -54,12 +54,19 @@ menu li i {
 }
 
 #overlay {
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.7);
     width: 100%;
     height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
+}
+
+.side-panel {
+    width: 30%;
+    height: 100vh;
+    background: #fff;
+    float: right;
 }
 
 /*
@@ -382,6 +389,70 @@ table .month {
 }
 
 /* Inbox */
+
+.compose-message {
+    width: 30%;
+    position: fixed;
+    top: 45px;
+    right: -50px;
+}
+
+.compose-message form {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.compose-message span {
+    display: block;
+    width: 25%;
+    float: right;
+    margin: 25px 0;
+}
+
+.compose-message span a {
+    font:
+        normal 700 0.8em "dejanire-sans",
+        sans-serif;
+    color: #201f1f;
+}
+
+.compose-message input {
+    width: 90%;
+    height: 40px;
+    margin: 10px 0;
+    outline: transparent;
+    font:
+        normal 100 0.8em "dejanire-sans",
+        sans-serif;
+    color: #201f1f;
+}
+
+.compose-message textarea {
+    width: 90%;
+    height: 150px;
+    margin: 10px 0;
+    outline: transparent;
+    font:
+        normal 100 0.8em "dejanire-sans",
+        sans-serif;
+    color: #201f1f;
+}
+
+.compose-message input[type="submit"] {
+    background: #de067a;
+    color: #fafafa;
+    border: none;
+    border-radius: 10px;
+    width: 150px;
+    height: 40px;
+    font:
+        normal 700 0.8em "dejanire-sans",
+        sans-serif;
+    cursor: pointer;
+    height: 50px;
+    float: right;
+    margin-right: 55px;
+}
 
 .sort-filter {
     display: inline-block;

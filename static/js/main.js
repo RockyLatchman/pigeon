@@ -15,7 +15,17 @@ const calendarEvent = `
        </div>
  `;
 
-const sidePanel = ``;
+const composeForm = `
+       <div class="compose-message">
+          <span><a href="">[X] CLOSE</a></span>
+          <form method="POST">
+              <input type="text" name="name" placeholder="To">
+              <input type="text" name="subject" placeholder="Subject">
+              <textarea name="message" placeholder="Message"></textarea>
+              <input type="submit" name="send-message" value="Send">
+           </form>
+       </div>
+ `;
 const editContactForm = ``;
 const videoContentWindow = ``;
 const confirmationMenu = ``;
@@ -55,8 +65,23 @@ function switchForm() {
   /* load Edit contact form  */
 }
 
-function loadPanel() {
+function loadPanel(panelForm) {
   /* load side panel with the appropriate form (video, storage item)*/
+  const sidePanel = `<div class="side-panel"></div>`;
+  const sidePanelTemplate = loadTemplate(sidePanel);
+  sidePanelTemplate.appendChild(panelForm);
+  const overlay = loadOverlayWindow();
+  overlay.appendChild(sidePanelTemplate);
+  document.querySelector("body").appendChild(overlay);
+}
+
+function composeWindow() {
+  const composeButton = document.querySelector("#compose");
+  composeButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    //load panel with appropriate form
+    loadPanel(loadTemplate(composeForm));
+  });
 }
 
 function loadOverlayWindow() {
@@ -77,10 +102,6 @@ function startVideoCall() {}
 function endVideoCall() {}
 
 function removePanel() {}
-
-function highlightSearchField() {
-  //add border bottom on magnify button click
-}
 
 function addCalendarEvent() {
   const addEventButton = document.querySelector("#add-event");
@@ -181,3 +202,4 @@ if (window.location.pathname == "/calendar") {
 toggleSearchField();
 highlightDate();
 openContextMenu();
+composeWindow();
