@@ -4,7 +4,7 @@ import os
 from datetime import datetime
 
 from dotenv import load_dotenv
-from flask import Flask, flash, render_template, request, session
+from flask import Flask, flash, jsonify, render_template, request, session
 from flask_wtf import CSRFProtect
 from models import Contact, Event, Message, Profile, Security, Storage, User
 from sqlmodel import Session, create_engine
@@ -107,6 +107,15 @@ def calendar_event():
 @app.route("/calendar/add/event", methods=["GET", "POST"])
 def add_event():
     pass
+
+
+@app.route("/storage/update", methods=["POST"])
+def update_item_name():
+    # save change to database and return result
+    if request.is_json:
+        data = request.get_json()
+        print(data)
+        return jsonify(data)
 
 
 @app.route("/storage")

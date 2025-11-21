@@ -198,7 +198,37 @@ function openItem(item) {}
 
 function downloadItem(item) {}
 
-function renameItem(item) {}
+function renameItem(item) {
+  const itemName = item.firstChild.nextSibling;
+  itemName.contentEditable = "true";
+  itemName.addEventListener("blur", (e) => {
+    localStorage.setItem("editedText", e.target.textContent);
+  });
+  const editedText = localStorage.getItem("editedText");
+  if (editedText) {
+    fetch("http://localhost:5555/storage/update", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRFToken": document
+          .querySelector('meta[name="csrf_token"]')
+          .getAttribute("content"),
+      },
+      body: JSON.stringify({
+        item: editedText,
+      }),
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Success", data);
+      })
+      .catch((error) => {
+        console.error("Error", error);
+      });
+  }
+}
 
 function getItemInfo(item) {}
 
@@ -238,7 +268,10 @@ if (window.location.pathname == "/calendar") {
   addCalendarEvent();
 }
 
+if (window.location.pathname == "/inbox") {
+  composeWindow();
+}
+
 toggleSearchField();
 highlightDate();
 openContextMenu();
-composeWindow();
