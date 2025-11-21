@@ -35,7 +35,6 @@ const storageMenu = `
          <li><a href="" id="open">Open</a></li>
          <li><a href="" id="download">Download</a></li>
          <li><a href="" id="rename">Rename</a></li>
-         <li><a href="" id="get-info">Get Info</a></li>
          <li><a href="" id="delete">Delete</a></li>
        </menu>
     </div>
@@ -121,7 +120,6 @@ function openContextMenu() {
       const menu = menuHTML.childNodes[1];
       menu.style.left = e.clientX + "px";
       menu.style.top = e.clientY + "px";
-      //item.parentNode.firstElementChild.innerHTML;
       document.querySelector("body").appendChild(menu);
       selectedMenuItem(document.querySelector("#open"), item.parentNode, menu);
       selectedMenuItem(
@@ -131,11 +129,6 @@ function openContextMenu() {
       );
       selectedMenuItem(
         document.querySelector("#rename"),
-        item.parentNode,
-        menu,
-      );
-      selectedMenuItem(
-        document.querySelector("#get-info"),
         item.parentNode,
         menu,
       );
@@ -171,13 +164,6 @@ function selectedMenuItem(menuItem, item, menu) {
         renameItem(item);
       });
       break;
-    case "get-info":
-      menuItem.addEventListener("click", (e) => {
-        e.preventDefault();
-        document.querySelector("body").removeChild(menu);
-        getItemInfo(item);
-      });
-      break;
     case "delete":
       menuItem.addEventListener("click", (e) => {
         e.preventDefault();
@@ -188,20 +174,13 @@ function selectedMenuItem(menuItem, item, menu) {
   }
 }
 
-// selectedMenuItem(document.querySelector(""));
-// selectedMenuItem(document.querySelector(""));
-// selectedMenuItem(document.querySelector(""));
-// selectedMenuItem(document.querySelector(""));
-// selectedMenuItem(document.querySelector(""));
-
-function openItem(item) {}
-
 function downloadItem(item) {}
 
 function renameItem(item) {
   const itemName = item.firstChild.nextSibling;
   itemName.contentEditable = "true";
   itemName.addEventListener("blur", (e) => {
+    //e.preventDefault();
     localStorage.setItem("editedText", e.target.textContent);
   });
   const editedText = localStorage.getItem("editedText");
@@ -230,7 +209,43 @@ function renameItem(item) {
   }
 }
 
-function getItemInfo(item) {}
+function openItem(items) {
+  const itemName = items.firstChild.nextSibling;
+  const overlay = loadOverlayWindow();
+  const itemDetails = `
+    <div class="item-details">
+       <span><a href="">[X] close</a></span>
+       <h3>Item details</h3>
+    </div>
+    `;
+  const itemInfoPanel = loadTemplate(itemDetails);
+  items.childNodes.forEach((item, i) => {
+    if (i % 2 !== 0 && i !== 7) {
+      const itemInfo = itemInfoPanel.childNodes[1];
+      itemInfo.innerHTML += `<p>${item.textContent}</p>`;
+      if (item.textContent == "Audio") {
+        itemInfo.innerHTML += `
+               <audio controls>
+                  <source src="${item.textContent}" type="audio/mp3">
+              </audio>
+        `;
+      }
+      if (item.textContent == "Video") {
+        itemInfo.innerHTML += `
+               <video width="320" height="240" controls>
+                  <source src="${item.textContent}" type="video/mp4">
+              </video>
+        `;
+      }
+    }
+  });
+  loadPanel(itemInfoPanel);
+}
+
+function sortItems() {
+  //get all the document items and sort them based on the
+  //selected drop down menu option
+}
 
 function deleteItem(item) {
   const confirmationResult = item.getAttribute("data-item");

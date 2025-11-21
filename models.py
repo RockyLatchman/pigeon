@@ -230,6 +230,9 @@ class Message(SQLModel, table=True):
     def retrieve_draft():
         pass
 
+    def mark_as_draft():
+        pass
+
     def filter_messages():
         pass
 

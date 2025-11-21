@@ -1333,6 +1333,61 @@ main .main-sidebar header ul li:nth-child(even) {
     text-decoration: none;
 }
 
+.item-details {
+    position: fixed;
+    top: 25px;
+    right: 5px;
+    width: 25%;
+    margin: 0 auto;
+    padding: 0 0 0 15px;
+}
+
+.item-details span {
+    display: block;
+    width: 25%;
+    font:
+        normal 100 1em "dejanire-sans",
+        sans-serif;
+    color: var(--dark-gray);
+    float: right;
+    margin-bottom: 50px;
+}
+
+.item-details span a {
+    font:
+        normal 700 1em "dejanire-sans",
+        sans-serif;
+    color: #201f1f;
+    text-decoration: none;
+}
+
+.item-details h3 {
+    font:
+        normal 700 2em "dejanire-sans",
+        sans-serif;
+    color: #201f1f;
+    margin: 50px 0 20px 0;
+}
+
+.item-details p {
+    width: 85%;
+    font:
+        normal 500 1.2em "dejanire-sans",
+        sans-serif;
+    color: #5a5a5a;
+    margin: 15px 0;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(200, 200, 200, 0.5);
+}
+
+.item-details video {
+    margin: 10px 0;
+}
+
+.item-details audio {
+    margin: 10px 0;
+}
+
 /* settings */
 
 .settings {
