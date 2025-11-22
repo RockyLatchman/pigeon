@@ -245,6 +245,26 @@ function openItem(items) {
 function sortItems() {
   //get all the document items and sort them based on the
   //selected drop down menu option
+  const filterItem = document.querySelector("select[name='document-filter']");
+  const documentTypes = document.querySelectorAll(".content-type");
+  filterItem.addEventListener("change", (e) => {
+    let resultContent = "";
+    document.querySelector(".content").innerHTML = "";
+    documentTypes.forEach((documentType, documentItem) => {
+      if (e.currentTarget.value == "All") {
+        resultContent += `
+            <ul><li>${documentType.parentNode.innerHTML}</li></ul>
+        `;
+      }
+      if (e.currentTarget.value == documentType.textContent) {
+        console.log(documentType.parentNode.innerHTML);
+        resultContent += `
+            <ul><li>${documentType.parentNode.innerHTML}</li></ul>
+        `;
+      }
+    });
+    document.querySelector(".content").innerHTML = resultContent;
+  });
 }
 
 function deleteItem(item) {
@@ -290,3 +310,4 @@ if (window.location.pathname == "/inbox") {
 toggleSearchField();
 highlightDate();
 openContextMenu();
+sortItems();
