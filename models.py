@@ -222,8 +222,14 @@ class Message(SQLModel, table=True):
         except Exception as e:
             return f"Unable to save message: {e}", 422
 
-    def delete_message():
-        pass
+    def delete_message(self, db_engine):
+        try:
+            with Session(db_engine) as session:
+                message = session.get(Message, self.message_id)
+                session.delete(message)
+                session.commit()
+        except Exception as e:
+            return f"Unable to delete message: {e}", 204
 
     def retrieve_message(self, db_engine):
         try:
