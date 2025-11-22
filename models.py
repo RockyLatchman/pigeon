@@ -254,8 +254,13 @@ class Message(SQLModel, table=True):
         else:
             return "No drafts"
 
-    def retrieve_draft():
-        pass
+    def retrieve_draft(self, db_engine):
+        try:
+            with Session(db_engine) as session:
+                draft = session.get(Message, self.message_id)
+                return draft.dict()
+        except Exception as e:
+            return f"Unable to retrieve draft: {e}", 404
 
     def filter_messages():
         pass

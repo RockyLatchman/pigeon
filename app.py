@@ -47,8 +47,8 @@ def inbox():
 
 @app.route("/inbox/send")
 def send_message():
-    message = Message(sender_id=2)
-    m = message.retrieve_drafts(db_engine)
+    message = Message(message_id=2)
+    m = message.retrieve_draft(db_engine)
     print(m)
     return {"success": 200}
 
