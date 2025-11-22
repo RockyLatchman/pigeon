@@ -118,6 +118,11 @@ def update_item_name():
         return jsonify(data)
 
 
+@app.route("/storage/add-item/")
+def add_storage_item():
+    pass
+
+
 @app.route("/storage")
 def storage():
     return render_template("storage.html")

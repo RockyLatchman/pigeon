@@ -246,8 +246,14 @@ class Storage(SQLModel, table=True):
     date_added: datetime = Field(default_factory=datetime.utcnow)
     user_storage: User = Relationship(back_populates="storage")
 
-    def add_item():
-        pass
+    def add_item(self, db_engine):
+        try:
+            with Session(db_engine) as session:
+                session.add(self)
+                session.commit()
+                session.rollback(self)
+        except Exception as e:
+            return f"Unable to save storage item: {e}", 422
 
     def remove_item():
         pass
