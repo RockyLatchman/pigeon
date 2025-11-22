@@ -255,8 +255,14 @@ class Storage(SQLModel, table=True):
         except Exception as e:
             return f"Unable to save storage item: {e}", 422
 
-    def remove_item():
-        pass
+    def remove_item(self, db_engine):
+        try:
+            with Session(db_engine) as session:
+                storage_item = session.get(Storage, self.storage_item_id)
+                session.delete(storage_item)
+                session.commit()
+        except Exception as e:
+            return f"Unable to delete item: {e}", 204
 
     def edit_item(self, db_engine):
         try:

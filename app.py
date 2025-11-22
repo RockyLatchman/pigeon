@@ -120,8 +120,8 @@ def update_item_name():
 
 @app.route("/storage/add-item/")
 def add_storage_item():
-    storage = Storage(user_id=2)
-    item = storage.disk_analyzer(db_engine)
+    storage = Storage(storage_item_id=14)
+    item = storage.remove_item(db_engine)
     print(item)
     return {"status": 200}
 
