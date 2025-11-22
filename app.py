@@ -47,10 +47,7 @@ def inbox():
 
 @app.route("/inbox/send")
 def send_message():
-    message = Message(message_id=4)
-    m = message.delete_message(db_engine)
-    print(m)
-    return {"success": 200}
+    pass
 
 
 @app.route("/contacts", methods=["GET", "POST"])

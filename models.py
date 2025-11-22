@@ -268,8 +268,13 @@ class Message(SQLModel, table=True):
         except Exception as e:
             return f"Unable to retrieve draft: {e}", 404
 
-    def filter_messages():
-        pass
+    def unread_message_count(self, db_engine):
+        messages = Message.retrieve_all_messages(self, db_engine)
+        message_count = []
+        for message in messages:
+            if message.status == "unread" and message.message_type == "message":
+                message_count.append(message)
+        return len(message_count)
 
 
 class Storage(SQLModel, table=True):
