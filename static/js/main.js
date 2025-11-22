@@ -257,13 +257,13 @@ function sortItems() {
         `;
       }
       if (e.currentTarget.value == documentType.textContent) {
-        console.log(documentType.parentNode.innerHTML);
         resultContent += `
             <ul><li>${documentType.parentNode.innerHTML}</li></ul>
         `;
       }
     });
     document.querySelector(".content").innerHTML = resultContent;
+    openContextMenu();
   });
 }
 
