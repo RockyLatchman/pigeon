@@ -233,8 +233,15 @@ class Message(SQLModel, table=True):
         except Exception as e:
             return f"Unable to find message: {e}", 404
 
-    def retrieve_all_messages():
-        pass
+    def retrieve_all_messages(self, db_engine):
+        try:
+            with Session(db_engine) as session:
+                messages = session.exec(
+                    select(Message).where(Message.sender_id == self.sender_id)
+                ).all()
+                return [message for message in messages]
+        except Exception as e:
+            return f"Unable to find messages: {e}", 404
 
     def retrieve_drafts():
         pass
