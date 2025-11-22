@@ -272,8 +272,13 @@ class Storage(SQLModel, table=True):
         except Exception as e:
             return f"Unable to update: {e}", 422
 
-    def retrieve_item():
-        pass
+    def retrieve_item(self, db_engine):
+        try:
+            with Session(db_engine) as session:
+                result = session.get(Storage, self.storage_item_id)
+                return result.dict()
+        except Exception as e:
+            return f"Unable to find item: {e}", 404
 
     def retrieve_items():
         pass
