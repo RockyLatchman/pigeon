@@ -213,8 +213,14 @@ class Message(SQLModel, table=True):
     status: str = Field(default="unread")
     user_message: User = Relationship(back_populates="messages")
 
-    def send_message():
-        pass
+    def save_message(self, db_engine):
+        try:
+            with Session(db_engine) as session:
+                session.add(self)
+                session.commit()
+                session.rollback(self)
+        except Exception as e:
+            return f"Unable to save message: {e}", 422
 
     def delete_message():
         pass
