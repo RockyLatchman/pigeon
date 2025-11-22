@@ -280,8 +280,15 @@ class Storage(SQLModel, table=True):
         except Exception as e:
             return f"Unable to find item: {e}", 404
 
-    def retrieve_items():
-        pass
+    def retrieve_items(self, db_engine):
+        try:
+            with Session(db_engine) as session:
+                items = session.exec(
+                    select(Storage).where(Storage.user_id == self.user_id)
+                ).all()
+                return [item for item in items]
+        except Exception as e:
+            return f"Unable to find items: {e}", 404
 
     def item_filter():
         pass
