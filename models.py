@@ -1,3 +1,4 @@
+import os
 import uuid
 from datetime import datetime, timezone
 from typing import List, Optional
@@ -299,9 +300,10 @@ class Storage(SQLModel, table=True):
     def item_filter():
         pass
 
-    def calculate_filesize():
+    @staticmethod
+    def calculate_filesize(item):
         # calculate uploaded files size
-        pass
+        return os.path.getsize(item) / 1024
 
     def disk_usage(self, db_engine):
         # a user gets 2GB
