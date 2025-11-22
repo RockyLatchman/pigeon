@@ -293,13 +293,17 @@ class Storage(SQLModel, table=True):
     def item_filter():
         pass
 
+    def calculate_filesize():
+        # calculate uploaded files size
+        pass
+
     def disk_usage(self, db_engine):
         # a user gets 2GB
         storage_items = Storage.retrieve_items(self, db_engine)
         result = 0
         for storage_item in storage_items:
             result += storage_item.item_size
-        return result / 1000
+        return f"{result / 1000} MB used of 2GB"
 
     def disk_analyzer():
         # looks at the file formats saved to your disk space(images, audio files etc)
