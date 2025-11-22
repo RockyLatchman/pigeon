@@ -258,8 +258,19 @@ class Storage(SQLModel, table=True):
     def remove_item():
         pass
 
-    def edit_item():
-        pass
+    def edit_item(self, db_engine):
+        try:
+            with Session(db_engine) as session:
+                result = session.get(Storage, self.storage_item_id)
+                for key, value in self.__dict__.items():
+                    if not key.startswith("_") and value is not None:
+                        setattr(result, key, value)
+                session.add(result)
+                session.commit()
+                session.refresh(result)
+                return result
+        except Exception as e:
+            return f"Unable to update: {e}", 422
 
     def retrieve_item():
         pass
