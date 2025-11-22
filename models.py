@@ -243,8 +243,16 @@ class Message(SQLModel, table=True):
         except Exception as e:
             return f"Unable to find messages: {e}", 404
 
-    def retrieve_drafts():
-        pass
+    def retrieve_drafts(self, db_engine):
+        messages = Message.retrieve_all_messages(self, db_engine)
+        drafts = []
+        for message in messages:
+            if message.message_type == "draft":
+                drafts.append(message)
+        if len(drafts) > 0:
+            return drafts
+        else:
+            return "No drafts"
 
     def retrieve_draft():
         pass
