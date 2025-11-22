@@ -120,7 +120,10 @@ def update_item_name():
 
 @app.route("/storage/add-item/")
 def add_storage_item():
-    pass
+    storage = Storage(user_id=2)
+    item = storage.disk_usage(db_engine)
+    print(item)
+    return {"status": 200}
 
 
 @app.route("/storage")
