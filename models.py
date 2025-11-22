@@ -305,10 +305,23 @@ class Storage(SQLModel, table=True):
             result += storage_item.item_size
         return f"{result / 1000} MB used of 2GB"
 
-    def disk_analyzer():
+    def disk_analyzer(self, db_engine):
         # looks at the file formats saved to your disk space(images, audio files etc)
         # and returns the number of files in that format and percentage saved of that file type
-        pass
+        item_types = {"audio": [], "image": [], "document": []}
+        storage_items = Storage.retrieve_items(self, db_engine)
+        for storage_item in storage_items:
+            if storage_item.item_type == "Audio":
+                item_types["audio"].append(storage_item.item_size)
+            elif storage_item.item_type == "Image":
+                item_types["image"].append(storage_item.item_size)
+            else:
+                item_types["document"].append(storage_item.item_size)
+        return {
+            "audio": sum(item_types["audio"]),
+            "image": sum(item_types["image"]),
+            "document": sum(item_types["document"]),
+        }
 
 
 class Security:
