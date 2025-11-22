@@ -225,8 +225,13 @@ class Message(SQLModel, table=True):
     def delete_message():
         pass
 
-    def retrieve_message():
-        pass
+    def retrieve_message(self, db_engine):
+        try:
+            with Session(db_engine) as session:
+                result = session.get(Message, self.message_id)
+                return result.dict()
+        except Exception as e:
+            return f"Unable to find message: {e}", 404
 
     def retrieve_all_messages():
         pass
@@ -235,9 +240,6 @@ class Message(SQLModel, table=True):
         pass
 
     def retrieve_draft():
-        pass
-
-    def mark_as_draft():
         pass
 
     def filter_messages():

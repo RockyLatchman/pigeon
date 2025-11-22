@@ -47,7 +47,10 @@ def inbox():
 
 @app.route("/inbox/send")
 def send_message():
-    pass
+    message = Message(message_id=1)
+    m = message.retrieve_message(db_engine)
+    print(m)
+    return {"success": 200}
 
 
 @app.route("/contacts", methods=["GET", "POST"])
