@@ -30,8 +30,16 @@ class User(SQLModel, table=True):
                 session.rollback()
                 return f"Unable to save: {e}", 422
 
-    def check_account_existence():
-        pass
+    def check_account_existence(self, db_engine):
+        try:
+            with Session(db_engine) as session:
+                user = session.get(User, self.user_id)
+                if user is not None:
+                    return user.dict()
+                else:
+                    return "Unable to find user", 404
+        except Exception as e:
+            return f"Unable to find user: {e}", 404
 
     def generate_session_id():
         pass
