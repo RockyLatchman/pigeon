@@ -50,6 +50,28 @@ def send_message():
     pass
 
 
+@app.route("/inbox/messages")
+def messages():
+    pass
+
+
+@app.route("/inbox/drafts")
+def drafts():
+    pass
+
+
+@app.route("/inbox/sent")
+def sent():
+    pass
+
+
+@app.route("/inbox/search", methods=["POST"])
+def search():
+    search = request.form.get("search")
+    print(search)
+    return f"search: {search}"
+
+
 @app.route("/contacts", methods=["GET", "POST"])
 def contacts():
     if request.method == "POST":

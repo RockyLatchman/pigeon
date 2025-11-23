@@ -1,14 +1,46 @@
 <header>
     <div class="search">
         <i class="fa-solid fa-magnifying-glass search-button"></i>
-        <input type="text" name="search" id="search" />
+        <form method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+            <input
+                type="text"
+                name="search"
+                id="search"
+                hx-post="{{ url_for('search') }}"
+                hx-trigger="keyup changed delay:500ms"
+                hx-target=".main-sidebar"
+                hx-swap="innerHTML"
+            />
+        </form>
     </div>
     <div class="message-menu">
         {% if request.endpoint == 'inbox' %}
         <menu>
-            <li><i class="fa-solid fa-envelope"></i> Messages</li>
-            <li><i class="fa-solid fa-pencil"></i> Drafts</li>
-            <li><i class="fa-solid fa-paper-plane"></i> Sent</li>
+            <li
+                hx-get="{{ url_for('messages') }}"
+                hx-trigger="click"
+                hx-target=".main-sidebar"
+                hx-swap="innerHTML"
+            >
+                <i class="fa-solid fa-envelope"></i> Messages
+            </li>
+            <li
+                hx-get="{{ url_for('drafts') }}"
+                hx-trigger="click"
+                hx-target=".main-sidebar"
+                hx-swap="innerHTML"
+            >
+                <i class="fa-solid fa-pencil"></i> Drafts
+            </li>
+            <li
+                hx-get="{{ url_for('sent') }}"
+                hx-trigger="click"
+                hx-target=".main-sidebar"
+                hx-swap="innerHTML"
+            >
+                <i class="fa-solid fa-paper-plane"></i> Sent
+            </li>
         </menu>
         {% endif %}
     </div>
