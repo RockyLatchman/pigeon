@@ -60,7 +60,7 @@ class Profile(SQLModel, table=True):
     date_added: datetime = Field(default_factory=datetime.utcnow)
     last_active: datetime = Field(default_factory=datetime.utcnow)
 
-    def create_profile(self):
+    def create_profile(self, db_engine):
         pass
 
     def update_profile(self):
@@ -283,6 +283,27 @@ class Message(SQLModel, table=True):
             if message.status == "unread" and message.message_type == "message":
                 message_count.append(message)
         return len(message_count)
+
+    def filter_messages(self, db_engine, sort_type):
+        try:
+            with Session(db_engine) as session:
+                if sort_type == "date":
+                    desc_messages = session.exec(
+                        select(Message)
+                        .where(Message.recipient_id == self.recipient_id)
+                        .order_by(Message.message_date.desc())
+                    ).all()
+                    return [message for message in desc_messages]
+                elif sort_type == "names":
+                    alphabetical_search = session.exec(
+                        select(Message)
+                        .where(Message.sender_id == User.user_id)
+                        .where(Message.recipient_id == self.recipient_id)
+                        .order_by(User.fullname)
+                    ).all()
+                    return [contact for contact in alphabetical_search]
+        except Exception as e:
+            return f"Unable to finf messages: {e}", 404
 
 
 class Storage(SQLModel, table=True):

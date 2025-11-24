@@ -55,6 +55,11 @@ def messages():
     pass
 
 
+@app.route("/inbox/message/<message_id>", methods=["POST"])
+def delete_message():
+    pass
+
+
 @app.route("/inbox/drafts")
 def drafts():
     pass
@@ -62,6 +67,11 @@ def drafts():
 
 @app.route("/inbox/sent")
 def sent():
+    pass
+
+
+@app.route("/inbox/filter")
+def sort_filter():
     pass
 
 

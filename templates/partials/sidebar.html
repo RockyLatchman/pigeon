@@ -1,7 +1,13 @@
 {% if request.endpoint == 'inbox' %}
 <div class="main-sidebar">
     <div class="sort-filter">
-        <select name="sort">
+        <select
+            name="sort"
+            hx-get="{{ url_for('sort_filter')}}"
+            hx-trigger="change"
+            hx-target=".sender-details"
+            hx-swap="innerHTML"
+        >
             <option value="sort" selected>Sort &#8964;</option>
             <option value="az">A-Z</option>
             <option value="date">Date</option>
