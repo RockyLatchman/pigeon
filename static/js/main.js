@@ -299,6 +299,27 @@ function highlightDate() {
   });
 }
 
+function profileMenu() {
+  const miniMenu = `
+      <div class="mini-profile-menu">
+        <span><a href="/signout">Sign out</a></span>
+      </div>
+  `;
+  const profileImage = document.querySelector("#profile-photo");
+  const menuTemplate = loadTemplate(miniMenu);
+  const profileMenu = menuTemplate.childNodes[1];
+  profileImage.addEventListener("click", (e) => {
+    profileMenu.style.left = e.clientX + "px";
+    profileMenu.style.top = e.clientY + "px";
+    document.querySelector("body").appendChild(profileMenu);
+  });
+  profileImage.addEventListener("mouseout", (e) => {
+    if (profileMenu) {
+      document.querySelector("body").removeChild(profileMenu);
+    }
+  });
+}
+
 if (window.location.pathname == "/calendar") {
   addCalendarEvent();
 }
@@ -311,3 +332,4 @@ toggleSearchField();
 highlightDate();
 openContextMenu();
 sortItems();
+profileMenu();

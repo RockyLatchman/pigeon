@@ -69,6 +69,31 @@ menu li i {
     float: right;
 }
 
+#profile-photo {
+    cursor: pointer;
+}
+
+.mini-profile-menu {
+    width: 150px;
+    height: 30px;
+    position: fixed;
+    top: 125px;
+    left: -10px;
+    border-radius: 15px;
+    background: #fff;
+    filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.3));
+    padding: 10px;
+    text-align: left;
+}
+
+.mini-profile-menu span a {
+    color: #201f1f;
+    font:
+        normal 100 0.9em "dejanire-sans",
+        sans-serif;
+    text-decoration: none;
+}
+
 /*
 
 .tk-fatfrank { font-family: "fatfrank",sans-serif; }
