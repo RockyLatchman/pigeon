@@ -6,18 +6,27 @@ from typing import List, Optional
 from email_validator import EmailNotValidError, validate_email
 from flask import redirect, url_for
 from passlib.hash import pbkdf2_sha256
-from sqlmodel import Field, Relationship, Session, SQLModel, select
+from sqlmodel import Field, Relationship, Session, SQLModel, distinct, select
 
 
 class User(SQLModel, table=True):
     __tablename__ = "users"
-    user_id: int | None = Field(default=None, primary_key=True)
+    user_id: Optional[int] = Field(default=None, primary_key=True)
     fullname: str
     email: str = Field(unique=True)
     password: str
+    mobile: str
+    image: str
+    status: str = Field(default="available")
+    bio: str
+    company: str
+    city: str
+    state: str
+    date_added: datetime = Field(default_factory=datetime.utcnow)
+    last_active: datetime = Field(default_factory=datetime.utcnow)
     contact_list: List["Contact"] = Relationship(back_populates="user_contacts")
     user_events: List["Event"] = Relationship(back_populates="user_event")
-    messages: List["Message"] = Relationship(back_populates="user_message")
+    received_messages: List["Message"] = Relationship(back_populates="recipient")
     storage: List["Storage"] = Relationship(back_populates="user_storage")
 
     def register(self, db_engine):
@@ -29,6 +38,31 @@ class User(SQLModel, table=True):
             except Exception as e:
                 session.rollback()
                 return f"Unable to save: {e}", 422
+
+    def get_user_account(self, db_engine):
+        try:
+            with Session(db_engine) as session:
+                user = session.exec(
+                    select(User).where(User.user_id == self.user_id)
+                ).one()
+                return user
+        except Exception as e:
+            return f"User not found: {e}", 404
+
+    def retrieve_user_data(self, db_engine):
+        try:
+            with Session(db_engine) as session:
+                results = session.exec(
+                    select(User, Message)
+                    .where(Message.recipient_id == self.user_id)
+                    .join(Message.recipient)
+                ).all()
+                return {
+                    "user": [user.dict() for user, message in results][0],
+                    "messages": [message.dict() for user, message in results],
+                }
+        except Exception as e:
+            return f"User not found: {e}", 404
 
     def check_account_existence(self, db_engine):
         try:
@@ -42,28 +76,6 @@ class User(SQLModel, table=True):
             return f"Unable to find user: {e}", 404
 
     def generate_session_id():
-        pass
-
-
-class Profile(SQLModel, table=True):
-    __tablename__ = "profiles"
-    profile_id: int | None = Field(default=None, primary_key=True)
-    mobile: str
-    image: str
-    status: str = Field(default="available")
-    bio: str
-    company: str
-    city: str
-    state: str
-    country: str
-    user_id: int
-    date_added: datetime = Field(default_factory=datetime.utcnow)
-    last_active: datetime = Field(default_factory=datetime.utcnow)
-
-    def create_profile(self, db_engine):
-        pass
-
-    def update_profile(self):
         pass
 
 
@@ -211,15 +223,17 @@ class Event(SQLModel, table=True):
 
 class Message(SQLModel, table=True):
     __tablename__ = "messages"
-    message_id: int | None = Field(default=None, primary_key=True)
-    sender_id: int = Field(foreign_key="users.user_id")
-    recipient_id: int
+    message_id: Optional[int] = Field(default=None, primary_key=True)
+    sender_id: int
+    recipient_id: int = Field(foreign_key="users.user_id")
     subject: str
     body: str
     message_type: str = Field(default="message")  # draft or message
     message_date: datetime = Field(default_factory=datetime.utcnow)
     status: str = Field(default="unread")
-    user_message: User = Relationship(back_populates="messages")
+    sender: str
+    sender_image: str
+    recipient: Optional[User] = Relationship(back_populates="received_messages")
 
     def save_message(self, db_engine):
         try:
@@ -251,7 +265,7 @@ class Message(SQLModel, table=True):
         try:
             with Session(db_engine) as session:
                 messages = session.exec(
-                    select(Message).where(Message.sender_id == self.sender_id)
+                    select(Message).where(Message.recipient_id == self.recipient_id)
                 ).all()
                 return [message for message in messages]
         except Exception as e:

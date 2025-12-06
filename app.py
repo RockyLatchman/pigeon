@@ -6,7 +6,7 @@ from datetime import datetime
 from dotenv import load_dotenv
 from flask import Flask, flash, jsonify, render_template, request, session
 from flask_wtf import CSRFProtect
-from models import Contact, Event, Message, Profile, Security, Storage, User
+from models import Contact, Event, Message, Security, Storage, User
 from sqlmodel import Session, create_engine
 
 load_dotenv(".env")
@@ -42,7 +42,18 @@ def signout():
 
 @app.route("/inbox")
 def inbox():
-    return render_template("inbox.html")
+    user = User(user_id=2)
+    user_data = user.retrieve_user_data(db_engine)
+    return render_template(
+        "inbox.html", messages=user_data["messages"], user=user_data["user"]
+    )
+
+
+@app.route("/inbox/message/")
+def get_message():
+    message = Message(message_id=request.args.get("mesg_id"))
+    message = message.retrieve_message(db_engine)
+    return render_template("partials/message.html", message=message)
 
 
 @app.route("/inbox/send")

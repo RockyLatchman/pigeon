@@ -14,66 +14,30 @@
         </select>
         <span>Today</span>
     </div>
-    <div class="sender-details first">
+    {% for message in messages %}
+    <div
+        class="sender-details"
+        hx-get="{{ url_for('get_message', mesg_id=message.message_id) }}"
+        hx-trigger="click"
+        hx-target=".message-content"
+        hx-swap="innerHTML"
+    >
         <div class="left-content">
             <span class="tag"></span>
-            <span class="status"
-                ><img
-                    src="{{ url_for('static', filename='images/image1.png') }}"
+            <span class="status">
+                <img
+                    src="{{ url_for('static', filename='images/profiles/' + message.sender_image) }}"
                     alt=""
             /></span>
         </div>
         <div class="right-content">
-            <p><span>Anna Slovaski</span>Sept 1</p>
-            <p>UI Designer position</p>
-            <p>Hello, I'm interested in your position at Encore...</p>
+            <span>{{ message.sender }}</span>
+            <span>{{ message.message_date.strftime('%b %d, %Y')}}</span>
+            <p>{{ message.subject }}</p>
+            <p>{{ message.body|truncate(200) }}</p>
         </div>
     </div>
-    <div class="sender-details">
-        <div class="left-content">
-            <span class="tag"></span>
-            <span class="status"
-                ><img
-                    src="{{ url_for('static', filename='images/image1.png') }}"
-                    alt=""
-            /></span>
-        </div>
-        <div class="right-content">
-            <p><span>Anna Slovaski</span>Sept 1</p>
-            <p>UI Designer position</p>
-            <p>Hello, I'm interested in your position at Encore...</p>
-        </div>
-    </div>
-    <div class="sender-details">
-        <div class="left-content">
-            <span class="tag"></span>
-            <span class="status"
-                ><img
-                    src="{{ url_for('static', filename='images/image1.png') }}"
-                    alt=""
-            /></span>
-        </div>
-        <div class="right-content">
-            <p><span>Anna Slovaski</span>Sept 1</p>
-            <p>UI Designer position</p>
-            <p>Hello, I'm interested in your position at Encore...</p>
-        </div>
-    </div>
-    <div class="sender-details">
-        <div class="left-content">
-            <span class="tag"></span>
-            <span class="status"
-                ><img
-                    src="{{ url_for('static', filename='images/image1.png') }}"
-                    alt=""
-            /></span>
-        </div>
-        <div class="right-content">
-            <p><span>Anna Slovaski</span>Sept 1</p>
-            <p>UI Designer position</p>
-            <p>Hello, I'm interested in your position at Encore...</p>
-        </div>
-    </div>
+    {% endfor %}
 </div>
 {% elif request.endpoint == 'contacts' %}
 <div class="main-sidebar">

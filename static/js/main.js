@@ -15,17 +15,6 @@ const calendarEvent = `
        </div>
  `;
 
-const composeForm = `
-       <div class="compose-message">
-          <span><a href="">[X] CLOSE</a></span>
-          <form method="POST">
-              <input type="text" name="name" placeholder="To">
-              <input type="text" name="subject" placeholder="Subject">
-              <textarea name="message" placeholder="Message"></textarea>
-              <input type="submit" name="send-message" value="Send">
-           </form>
-       </div>
- `;
 const editContactForm = ``;
 const videoContentWindow = ``;
 
@@ -74,15 +63,6 @@ function loadPanel(panelForm) {
   document.querySelector("body").appendChild(overlay);
 }
 
-function composeWindow() {
-  const composeButton = document.querySelector("#compose");
-  composeButton.addEventListener("click", (e) => {
-    e.preventDefault();
-    //load panel with appropriate form
-    loadPanel(loadTemplate(composeForm));
-  });
-}
-
 function loadOverlayWindow() {
   //create and append overlay to the DOM
   const overlayDiv = document.createElement("div");
@@ -114,10 +94,10 @@ function addCalendarEvent() {
 
 function openContextMenu() {
   const documentItem = document.querySelectorAll(".kebab-menu");
+  const menuHTML = loadTemplate(storageMenu);
+  const menu = menuHTML.childNodes[1];
   documentItem.forEach((item) => {
     item.addEventListener("click", (e) => {
-      const menuHTML = loadTemplate(storageMenu);
-      const menu = menuHTML.childNodes[1];
       menu.style.left = e.clientX + "px";
       menu.style.top = e.clientY + "px";
       document.querySelector("body").appendChild(menu);
@@ -146,28 +126,28 @@ function selectedMenuItem(menuItem, item, menu) {
     case "open":
       menuItem.addEventListener("click", (e) => {
         e.preventDefault();
-        document.querySelector("body").removeChild(menu);
+        if (menu) document.querySelector("body").removeChild(menu);
         openItem(item);
       });
       break;
     case "download":
       menuItem.addEventListener("click", (e) => {
         e.preventDefault();
-        document.querySelector("body").removeChild(menu);
+        if (menu) document.querySelector("body").removeChild(menu);
         downloadItem(item);
       });
       break;
     case "rename":
       menuItem.addEventListener("click", (e) => {
         e.preventDefault();
-        document.querySelector("body").removeChild(menu);
+        if (menu) document.querySelector("body").removeChild(menu);
         renameItem(item);
       });
       break;
     case "delete":
       menuItem.addEventListener("click", (e) => {
         e.preventDefault();
-        document.querySelector("body").removeChild(menu);
+        if (menu) document.querySelector("body").removeChild(menu);
         deleteItem(item);
       });
       break;
@@ -313,10 +293,11 @@ function profileMenu() {
     profileMenu.style.top = e.clientY + "px";
     document.querySelector("body").appendChild(profileMenu);
   });
-  profileImage.addEventListener("mouseout", (e) => {
-    if (profileMenu) {
+  profileMenu.addEventListener("mousemove", (e) => {
+    e.preventDefault();
+    setTimeout(() => {
       document.querySelector("body").removeChild(profileMenu);
-    }
+    }, 1000);
   });
 }
 
@@ -324,12 +305,11 @@ if (window.location.pathname == "/calendar") {
   addCalendarEvent();
 }
 
-if (window.location.pathname == "/inbox") {
-  composeWindow();
+if (window.location.pathname == "/storage") {
+  sortItems();
+  openContextMenu();
 }
 
 toggleSearchField();
 highlightDate();
-openContextMenu();
-sortItems();
 profileMenu();

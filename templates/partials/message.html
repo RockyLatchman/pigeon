@@ -1,0 +1,67 @@
+<div class="main-content">
+    <div class="message-content">
+        {% if message %}
+        <header>
+            <div class="sender-details-header">
+                <div class="left-content">
+                    <img
+                        src="{{ url_for('static', filename='images/profiles/' + message.sender_image) }}"
+                        alt=""
+                    />
+                </div>
+                <!-- end of left-content -->
+                <div class="right-content">
+                    <div>
+                        <h4>{{ message['sender'] }}</h4>
+                        <p>Subject: {{ message['subject'] }}</p>
+                    </div>
+                    <ul>
+                        <li id="compose">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-trash-can"></i>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-video video"></i>
+                        </li>
+                    </ul>
+                </div>
+                <!-- end of right-content -->
+            </div>
+            <!-- end of sender-details-header -->
+        </header>
+        <div class="message">
+            <div class="content">
+                <p>
+                    {{ message['message_date'].strftime('%b %d, %Y %I:%H:%M%p')
+                    }}
+                </p>
+                <p>{{ message['body'] }}</p>
+            </div>
+            <div id="message-reply">
+                <input
+                    type="text"
+                    name="message-reply"
+                    placeholder="Reply here"
+                />
+                <ul>
+                    <li>
+                        <span id="add-attachment"
+                            ><i class="fa-solid fa-paperclip"></i
+                        ></span>
+                    </li>
+                    <li>
+                        <span id="send-message"
+                            ><a href="{{ send_message }}"
+                                ><i class="fa-solid fa-paper-plane"></i></a
+                        ></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        {% else %} {% endif %}
+    </div>
+</div>
+<script src="{{ url_for('static', filename='js/messages.js') }}"></script>

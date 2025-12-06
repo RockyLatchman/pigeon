@@ -244,7 +244,7 @@ main {
 }
 
 main .main-sidebar {
-    width: 25%;
+    width: 30%;
     height: 100vh;
     border-right: 1px solid rgba(212, 212, 212, 0.5);
 }
@@ -354,7 +354,7 @@ main .schedule button {
 }
 
 main .main-content {
-    width: 75%;
+    width: 100%;
     height: auto;
 }
 
@@ -509,6 +509,8 @@ table .month {
     color: #201f1f;
 }
 
+/* sidebar messages */
+
 .sort-filter {
     display: inline-block;
     width: 98%;
@@ -544,8 +546,8 @@ table .month {
 .sender-details {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    background: #f0f0f0;
+    justify-content: space-between;
+    background: #fcfcfc;
     border-bottom: 1px solid #ccc;
     width: 100%;
     height: 85px;
@@ -553,24 +555,44 @@ table .month {
     cursor: pointer;
 }
 
-.sender-details.first {
+.sender-details:hover {
     background: #fff;
     border: none;
 }
 
-.sender-details .left-content img {
-    width: 48px;
-    height: 48px;
-    margin: 10px 10px 10px 0;
+.sender-details .left-content {
+    width: 75px;
+    height: 75px;
+    margin-left: 15px;
 }
 
-.sender-details .right-content p span {
-    display: inline-block;
+.sender-details .right-content {
+    width: 375px;
+    height: auto;
+    margin: auto 0 auto 15px;
+}
+
+.sender-details .left-content img {
+    width: 64px;
+    height: 64px;
+    margin: 10px 0 10px 0;
+}
+
+.sender-details .right-content span {
+    display: inline;
     font:
-        normal 800 1em "dejanire-sans",
+        normal 600 0.9em "dejanire-sans",
         sans-serif;
     color: var(--dark-gray);
-    width: 85%;
+    padding-right: 5px;
+}
+
+.sender-details .right-content span:nth-child(2) {
+    font:
+        normal 500 0.8em "dejanire-sans",
+        sans-serif;
+    color: var(--dark-gray);
+    float: right;
 }
 
 .sender-details .right-content p {
@@ -581,12 +603,35 @@ table .month {
     margin: 2px 0;
 }
 
+/********************************/
+
+/* message content */
+
+.message-content {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.message-content p {
+    font:
+        normal 700 1.2em "dejanire-sans",
+        sans-serif;
+    text-align: center;
+    margin: -35px 0 0 0;
+    padding: 0;
+}
+
 .sender-details-header {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     width: 100%;
     height: 75px;
+    padding: 15px 0;
+    background: #fafafa;
+    position: absolute;
+    top: 0;
 }
 
 .sender-details-header .left-content {
@@ -598,10 +643,10 @@ table .month {
 }
 
 .sender-details-header .left-content img {
-    display: inline-block;
-    width: 54px;
-    height: 54px;
-    margin: 10px auto;
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto;
 }
 
 .sender-details-header .right-content {
@@ -614,7 +659,7 @@ table .month {
 }
 
 .sender-details-header .right-content div {
-    width: 50%;
+    width: 100%;
     margin-left: 10px;
 }
 
@@ -632,7 +677,7 @@ table .month {
 }
 
 .sender-details-header .right-content ul {
-    width: 20%;
+    width: 100%;
     margin: -5px 85px -5px auto;
     text-align: right;
 }
@@ -687,27 +732,34 @@ table .month {
     padding: 0 25px;
 }
 
-.message-content .message h4 {
-    font:
-        normal 700 1.2em "dejanire-sans",
-        sans-serif;
-    margin: 50px 0 10px 0;
+.message-content .message .content {
+    margin: 50px 0;
+    width: 100%;
+    height: auto;
 }
 
-.message-content .message p {
+.message-content .message .content p:first-of-type {
+    color: #989898;
+    margin: 25px 0 50px 0;
+    text-align: center;
+}
+
+.message-content .message .content p {
     font:
-        normal 100 0.9em "dejanire-sans",
+        normal 300 0.9em "dejanire-sans",
         sans-serif;
-    line-height: 1.7em;
-    margin-bottom: 15px;
+    color: #1e1e1e;
+    text-align: left;
 }
 
 .message-content .message #message-reply {
     border: 1px solid rgb(212, 212, 212);
     border-radius: 25px;
-    width: 100%;
+    width: 57%;
     height: 200px;
-    margin: 35px auto 0 auto;
+    margin: 0 auto;
+    position: absolute;
+    bottom: 75px;
 }
 
 .message-content .message #message-reply input[type="text"] {
@@ -1417,7 +1469,7 @@ main .main-sidebar header ul li:nth-child(even) {
 
 .settings {
     margin: 75px auto 0 auto !important;
-    width: 100%;
+    width: 75%;
 }
 
 .settings header {
