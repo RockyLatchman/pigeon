@@ -83,7 +83,11 @@ def sent():
 
 @app.route("/inbox/filter")
 def sort_filter():
-    pass
+    message = Message(recipient_id=request.args.get("user_id"))
+    messages = message.filter_messages(db_engine, request.args.get("sort"))
+    return render_template(
+        "partials/inbox_filter.html", id=request.args.get("user_id"), messages=messages
+    )
 
 
 @app.route("/inbox/search", methods=["POST"])

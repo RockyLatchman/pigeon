@@ -307,7 +307,7 @@ class Message(SQLModel, table=True):
                         .where(Message.recipient_id == self.recipient_id)
                         .order_by(Message.message_date.desc())
                     ).all()
-                    return [message for message in desc_messages]
+                    return [message.dict() for message in desc_messages]
                 elif sort_type == "names":
                     alphabetical_search = session.exec(
                         select(Message)
@@ -315,7 +315,7 @@ class Message(SQLModel, table=True):
                         .where(Message.recipient_id == self.recipient_id)
                         .order_by(User.fullname)
                     ).all()
-                    return [contact for contact in alphabetical_search]
+                    return [contact.dict() for contact in alphabetical_search]
         except Exception as e:
             return f"Unable to finf messages: {e}", 404
 
