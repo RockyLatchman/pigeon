@@ -18,7 +18,7 @@
         {% if request.endpoint == 'inbox' %}
         <menu>
             <li
-                hx-get="{{ url_for('messages') }}"
+                hx-get="{{ url_for('messages', user_id=user.user_id) }}"
                 hx-trigger="click"
                 hx-target=".main-sidebar"
                 hx-swap="innerHTML"
@@ -26,7 +26,7 @@
                 <i class="fa-solid fa-envelope"></i> Messages
             </li>
             <li
-                hx-get="{{ url_for('drafts') }}"
+                hx-get="{{ url_for('drafts', user_id=user.user_id) }}"
                 hx-trigger="click"
                 hx-target=".main-sidebar"
                 hx-swap="innerHTML"
@@ -34,7 +34,7 @@
                 <i class="fa-solid fa-pencil"></i> Drafts
             </li>
             <li
-                hx-get="{{ url_for('sent') }}"
+                hx-get="{{ url_for('sent', user_id=user.user_id) }}"
                 hx-trigger="click"
                 hx-target=".main-sidebar"
                 hx-swap="innerHTML"

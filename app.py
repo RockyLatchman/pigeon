@@ -73,7 +73,12 @@ def delete_message():
 
 @app.route("/inbox/drafts")
 def drafts():
-    pass
+    drafts = Message(recipient_id=request.args.get("user_id"))
+    drafts = drafts.retrieve_drafts(db_engine)
+    print(drafts)
+    return render_template(
+        "partials/drafts.html", user_id=request.args.get("user_id"), drafts=drafts
+    )
 
 
 @app.route("/inbox/sent")
