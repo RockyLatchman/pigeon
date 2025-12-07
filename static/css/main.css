@@ -247,6 +247,7 @@ main .main-sidebar {
     width: 30%;
     height: 100vh;
     border-right: 1px solid rgba(212, 212, 212, 0.5);
+    max-width: 400px;
 }
 
 main .main-sidebar header {

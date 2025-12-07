@@ -58,11 +58,32 @@ class User(SQLModel, table=True):
                     .join(Message.recipient)
                 ).all()
                 return {
-                    "user": [user.dict() for user, message in results][0],
-                    "messages": [message.dict() for user, message in results],
+                    "messages": [
+                        {
+                            "fullname": user.fullname,
+                            "image": user.image,
+                            "message": message,
+                        }
+                        for user, message in results
+                    ],
                 }
         except Exception as e:
             return f"User not found: {e}", 404
+
+    # def retrieve_user_data(self, db_engine):
+    #     try:
+    #         with Session(db_engine) as session:
+    #             results = session.exec(
+    #                 select(User, Message)
+    #                 .where(Message.recipient_id == self.user_id)
+    #                 .join(Message.recipient)
+    #             ).all()
+    #             return {
+    #                 "user": [user.dict() for user, message in results][0],
+    #                 "messages": [message.dict() for user, message in results],
+    #             }
+    #     except Exception as e:
+    #         return f"User not found: {e}", 404
 
     def check_account_existence(self, db_engine):
         try:
@@ -243,6 +264,28 @@ class Message(SQLModel, table=True):
                 session.rollback(self)
         except Exception as e:
             return f"Unable to save message: {e}", 422
+
+    def sent_messages(self, db_engine):
+        with Session(db_engine) as session:
+            messages = session.exec(
+                select(User, Message)
+                .where(Message.sender_id == self.sender_id)
+                .where(Message.message_type == "sent")
+                .join(Message.recipient)
+            ).all()
+            if len(messages) > 0:
+                return {
+                    "messages": [
+                        {
+                            "fullname": user.fullname,
+                            "image": user.image,
+                            "message": message,
+                        }
+                        for user, message in messages
+                    ]
+                }
+            else:
+                return "No sent messages", 422
 
     def delete_message(self, db_engine):
         try:

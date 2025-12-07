@@ -42,11 +42,17 @@ def signout():
 
 @app.route("/inbox")
 def inbox():
-    user = User(user_id=2)
+    user_id = 2
+    user = User(user_id=user_id)
     user_data = user.retrieve_user_data(db_engine)
     return render_template(
-        "inbox.html", messages=user_data["messages"], user=user_data["user"]
+        "inbox.html", messages=user_data["messages"], user_id=user_id
     )
+
+
+@app.route("/inbox/messages")
+def messages():
+    pass
 
 
 @app.route("/inbox/message/")
@@ -56,14 +62,16 @@ def get_message():
     return render_template("partials/message.html", message=message)
 
 
-@app.route("/inbox/send")
-def send_message():
-    pass
-
-
-@app.route("/inbox/messages")
-def messages():
-    pass
+@app.route("/inbox/sent/")
+def sent_messages():
+    messages = Message(sender_id=request.args.get("user_id"))
+    sent_messages = messages.sent_messages(db_engine)
+    if isinstance(sent_messages, tuple):
+        sent_messages = 0
+        print(sent_messages)
+    else:
+        sent_messages = sent_messages["messages"]
+    return render_template("partials/sent.html", messages=sent_messages)
 
 
 @app.route("/inbox/message/<message_id>", methods=["POST"])
@@ -79,11 +87,6 @@ def drafts():
     return render_template(
         "partials/drafts.html", user_id=request.args.get("user_id"), drafts=drafts
     )
-
-
-@app.route("/inbox/sent")
-def sent():
-    pass
 
 
 @app.route("/inbox/filter")
