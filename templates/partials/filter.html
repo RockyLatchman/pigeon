@@ -7,8 +7,9 @@
                 type="text"
                 name="search"
                 id="search"
+                placeholder="Search..."
                 hx-post="{{ url_for('search') }}"
-                hx-trigger="keyup changed delay:500ms"
+                hx-trigger="input changed delay:300ms, keyup[key=='Enter']"
                 hx-target=".main-sidebar"
                 hx-swap="innerHTML"
             />

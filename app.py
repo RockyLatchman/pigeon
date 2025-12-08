@@ -105,9 +105,12 @@ def sort_filter():
 
 @app.route("/inbox/search", methods=["POST"])
 def search():
-    search = request.form.get("search")
-    print(search)
-    return f"search: {search}"
+    user_search = request.form.get("search")
+    messages = Message(recipient_id=2)
+    messages = messages.find_user_messages(db_engine, user_search)
+    return render_template(
+        "partials/search.html", messages=messages, user_id=2, user_search=user_search
+    )
 
 
 @app.route("/contacts", methods=["GET", "POST"])

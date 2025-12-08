@@ -6,6 +6,7 @@ from typing import List, Optional
 from email_validator import EmailNotValidError, validate_email
 from flask import redirect, url_for
 from passlib.hash import pbkdf2_sha256
+from sqlalchemy.sql.operators import ilike_op
 from sqlmodel import Field, Relationship, Session, SQLModel, distinct, select
 
 
@@ -69,21 +70,6 @@ class User(SQLModel, table=True):
                 }
         except Exception as e:
             return f"User not found: {e}", 404
-
-    # def retrieve_user_data(self, db_engine):
-    #     try:
-    #         with Session(db_engine) as session:
-    #             results = session.exec(
-    #                 select(User, Message)
-    #                 .where(Message.recipient_id == self.user_id)
-    #                 .join(Message.recipient)
-    #             ).all()
-    #             return {
-    #                 "user": [user.dict() for user, message in results][0],
-    #                 "messages": [message.dict() for user, message in results],
-    #             }
-    #     except Exception as e:
-    #         return f"User not found: {e}", 404
 
     def check_account_existence(self, db_engine):
         try:
@@ -360,7 +346,20 @@ class Message(SQLModel, table=True):
                     ).all()
                     return [contact.dict() for contact in alphabetical_search]
         except Exception as e:
-            return f"Unable to finf messages: {e}", 404
+            return f"Unable to find messages: {e}", 404
+
+    def find_user_messages(self, db_engine, user_search):
+        # find messages from a certain user
+        try:
+            with Session(db_engine) as session:
+                search_results = session.exec(
+                    select(Message)
+                    .where(Message.recipient_id == self.recipient_id)
+                    .where(Message.sender.ilike(f"%{user_search}%"))
+                ).all()
+                return [user_messages.dict() for user_messages in search_results]
+        except Exception as e:
+            return f"Unable to find user: {e}", 404
 
 
 class Storage(SQLModel, table=True):
