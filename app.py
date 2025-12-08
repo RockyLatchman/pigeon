@@ -52,7 +52,12 @@ def inbox():
 
 @app.route("/inbox/messages")
 def messages():
-    pass
+    messages = Message(recipient_id=request.args.get("user_id"))
+    messages = messages.retrieve_all_messages(db_engine)
+    print(messages)
+    return render_template(
+        "partials/messages.html", user_id=request.args.get("user_id"), messages=messages
+    )
 
 
 @app.route("/inbox/message/")

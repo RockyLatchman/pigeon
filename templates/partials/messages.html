@@ -1,0 +1,40 @@
+<div class="sort-filter">
+    <select
+        name="sort"
+        hx-get="{{ url_for('sort_filter', user_id=user_id) }}"
+        hx-trigger="change"
+        hx-target=".inbox-messages"
+        hx-swap="innerHTML"
+    >
+        <option value="sort" selected>Sort &#8964;</option>
+        <option value="names">A-Z</option>
+        <option value="date">Date</option>
+    </select>
+    <span>Today</span>
+</div>
+<div class="inbox-messages">
+    {% for message in messages %}
+    <div
+        class="sender-details"
+        hx-get="{{ url_for('get_message', mesg_id=message.message_id) }}"
+        hx-trigger="click"
+        hx-target=".message-content"
+        hx-swap="innerHTML"
+    >
+        <div class="left-content">
+            <span class="tag"></span>
+            <span class="status">
+                <img
+                    src="{{ url_for('static', filename='images/profiles/' + message.sender_image) }}"
+                    alt=""
+            /></span>
+        </div>
+        <div class="right-content">
+            <span>{{ message.sender }}</span>
+            <span>{{ message.message_date.strftime('%b %d, %Y')}}</span>
+            <p>{{ message.subject }}</p>
+            <p>{{ message.body|truncate(200) }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
