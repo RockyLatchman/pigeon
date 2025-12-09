@@ -20,4 +20,12 @@ function composeWindow() {
   }
 }
 
+function removeMessage() {
+  const removeButton = document.querySelector("#remove-message");
+  removeButton.addEventListener("click", (e) => {
+    location.reload();
+  });
+}
+
 composeWindow();
+removeMessage();

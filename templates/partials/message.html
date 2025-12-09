@@ -13,14 +13,28 @@
                 <div class="right-content">
                     <div>
                         <h4>{{ message['sender'] }}</h4>
-                        <p>Subject: {{ message['subject'] }}</p>
+                        <p>{{ message['subject'] }}</p>
                     </div>
                     <ul>
                         <li id="compose">
                             <i class="fa-solid fa-paper-plane"></i>
                         </li>
                         <li>
-                            <i class="fa-solid fa-trash-can"></i>
+                            <form method="POST">
+                                <input
+                                    type="hidden"
+                                    name="csrf_token"
+                                    value="{{ csrf_token() }}"
+                                />
+                                <button
+                                    hx-post="{{ url_for('delete_message', mesg_id=message.message_id)}}"
+                                    hx-target=".main-content"
+                                    hx-swap="innerHTML"
+                                    id="remove-message"
+                                >
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </button>
+                            </form>
                         </li>
                         <li>
                             <i class="fa-solid fa-video video"></i>

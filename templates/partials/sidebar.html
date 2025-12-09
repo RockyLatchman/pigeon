@@ -14,6 +14,7 @@
         </select>
         <span>Today</span>
     </div>
+
     <div class="inbox-messages">
         {% for message in messages %}
         <div
@@ -38,12 +39,13 @@
                     %Y')}}</span
                 >
                 <p>{{ message.message.subject }}</p>
-                <p>{{ message.message.body|truncate(200) }}</p>
+                <p>{{ message.message.body|truncate(50) }}</p>
             </div>
         </div>
         {% endfor %}
     </div>
 </div>
+
 {% elif request.endpoint == 'contacts' %}
 <div class="main-sidebar">
     <header>

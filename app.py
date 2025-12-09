@@ -4,7 +4,16 @@ import os
 from datetime import datetime
 
 from dotenv import load_dotenv
-from flask import Flask, flash, jsonify, render_template, request, session
+from flask import (
+    Flask,
+    flash,
+    jsonify,
+    redirect,
+    render_template,
+    request,
+    session,
+    url_for,
+)
 from flask_wtf import CSRFProtect
 from models import Contact, Event, Message, Security, Storage, User
 from sqlmodel import Session, create_engine
@@ -79,9 +88,12 @@ def sent_messages():
     return render_template("partials/sent.html", messages=sent_messages)
 
 
-@app.route("/inbox/message/<message_id>", methods=["POST"])
-def delete_message():
-    pass
+@app.route("/inbox/message/<mesg_id>", methods=["POST"])
+def delete_message(mesg_id):
+    message = Message(message_id=mesg_id)
+    message.delete_message(db_engine)
+    return "", 204
+    # return redirect(url_for("inbox"))
 
 
 @app.route("/inbox/drafts")

@@ -34,7 +34,7 @@
             <span>{{ message.sender }}</span>
             <span>{{ message.message_date.strftime('%b %d, %Y')}}</span>
             <p>{{ message.subject }}</p>
-            <p>{{ message.body|truncate(200) }}</p>
+            <p>{{ message.body|truncate(50) }}</p>
         </div>
     </div>
     {% endfor %}

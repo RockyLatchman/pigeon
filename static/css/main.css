@@ -248,6 +248,10 @@ main .main-sidebar {
     height: 100vh;
     border-right: 1px solid rgba(212, 212, 212, 0.5);
     max-width: 400px;
+    position: fixed;
+    left: 18.3%;
+    top: 7%;
+    overflow-y: scroll;
 }
 
 main .main-sidebar header {
@@ -609,9 +613,12 @@ table .month {
 /* message content */
 
 .message-content {
-    width: 100%;
+    width: 79.5%;
     height: auto;
     margin: 0 auto;
+    position: absolute;
+    left: 20.5%;
+    top: 7.3%;
 }
 
 .message-content p {
@@ -704,7 +711,16 @@ table .month {
 }
 
 .compose {
-    font-size: 0.8em;
+    font-size: 0.9em;
+}
+
+.sender-details-header .right-content button {
+    width: 35px;
+    height: 35px;
+    background: #ccc;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
 }
 
 .sender-details-header .right-content li {
@@ -751,6 +767,8 @@ table .month {
         sans-serif;
     color: #1e1e1e;
     text-align: left;
+    line-height: 2em;
+    margin-top: 15px;
 }
 
 .message-content .message #message-reply {
@@ -759,8 +777,9 @@ table .month {
     width: 57%;
     height: 200px;
     margin: 0 auto;
-    position: absolute;
-    bottom: 75px;
+    position: fixed;
+    bottom: 50px;
+    right: 75px;
 }
 
 .message-content .message #message-reply input[type="text"] {
